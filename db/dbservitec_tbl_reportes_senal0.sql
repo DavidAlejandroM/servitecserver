@@ -16,26 +16,40 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tbl_categoria`
+-- Table structure for table `tbl_reportes_senal`
 --
 
-DROP TABLE IF EXISTS `tbl_categoria`;
+DROP TABLE IF EXISTS `tbl_reportes_senal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tbl_categoria` (
-  `id_categoria` int(100) NOT NULL,
-  `nombre` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+CREATE TABLE `tbl_reportes_senal` (
+  `id_reporte` int(11) NOT NULL AUTO_INCREMENT,
+  `id_senal` int(20) NOT NULL,
+  `latitud` int(100) NOT NULL,
+  `longitud` int(100) NOT NULL,
+  `fecha` date DEFAULT NULL,
+  `foto` varchar(1000) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `tablero` int(11) NOT NULL,
+  `pedestal` int(11) NOT NULL,
+  `anclaje` int(11) NOT NULL,
+  `visibilidad` int(11) NOT NULL,
+  `observaciones` varchar(1000) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_reporte`),
+  KEY `id_senal_idx` (`id_senal`),
+  KEY `id_senal_idz` (`id_senal`),
+  KEY `pedestal` (`pedestal`),
+  KEY `pedestal_2` (`pedestal`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_categoria`
+-- Dumping data for table `tbl_reportes_senal`
 --
 
-LOCK TABLES `tbl_categoria` WRITE;
-/*!40000 ALTER TABLE `tbl_categoria` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_categoria` ENABLE KEYS */;
+LOCK TABLES `tbl_reportes_senal` WRITE;
+/*!40000 ALTER TABLE `tbl_reportes_senal` DISABLE KEYS */;
+INSERT INTO `tbl_reportes_senal` VALUES (1,1,0,0,NULL,'null',2,2,1,2,'hola'),(2,6,0,0,NULL,'null',2,2,2,2,'holasofianavas');
+/*!40000 ALTER TABLE `tbl_reportes_senal` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -47,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-08  1:07:35
+-- Dump completed on 2016-11-10  8:40:33
