@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class ReportesRest extends CI_Controller {
 
 
-	public function insertarReporte($idSenal,$lat,$lng,$idTablero,
-									$idPedestal,$idAnclaje,$idVisibolidad,$foto)
+	/*public function insertarReporte($idSenal,$lat,$lng,$idTablero,
+$idPedestal,$idAnclaje,$idVisibolidad,$foto)
 	{
 		echo $idSenal;
 		echo "\n";
@@ -23,6 +23,15 @@ class ReportesRest extends CI_Controller {
 		echo "\n";
 		echo $foto;
 		echo "\n";
+
+
+	}*/
+
+	public function insertarReporte()
+	{
+		$my = $_POST;
+
+		echo json_encode($my);
 
 		/*$this->load->model('db_model');
 		$estado = $this->db_model->obtenerTodoEstados();
