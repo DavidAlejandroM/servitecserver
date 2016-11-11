@@ -21,4 +21,18 @@ class db_model extends CI_Model
 
         /*ALTER TABLE `tbl_reportes_senal` AUTO_INCREMENT=1*/
     }
+
+    public function obtenerReportes()
+    {
+        $q = $this->db->get('tbl_reportes_senal');
+        return $q->result();
+    }
+
+    public function obtenerSeñal($id)
+    {
+        $this->db->where('id_senal', $id);
+        $q = $q = $this->db->get('tbl_senal');
+
+        return $q->result();
+    }
 }

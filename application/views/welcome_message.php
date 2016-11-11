@@ -17,10 +17,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="js/lib/materialize.min.js"></script>
     <script src="js/lib/angular.min.js"></script>
 
+<!--controladores-->
     <script src="js/controllers/MapCtrl.js"></script>
+<!--services-->
+    <script src="js/services/reporteSenalService.js"></script>
+    <script src="js/services/configService.js"></script>
+    <script src="js/services/modeloService.js"></script>
 </head>
-<body ng-app="servitecWeb" ng-controller="MapCtrl">
-<div class="">
+<body ng-app="servitecWeb" >
+<div ng-controller="MapCtrl">
     <nav>
         <div class="nav-wrapper colorApp">
             <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
@@ -38,12 +43,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         </div>
 
-        <div class="col s4">
-            <div class="row valign-wrapper" style="background-color: #8ba8af">
+        <div class="col s4" id="itemReporte">
+            <div class="row valign-wrapper item-reporte z-depth-1" ng-repeat="r in reportes">
                 <div class="col s3">
-                    <img ng-src="img/sr-05" style="width: 100%;">
+                    <img ng-src="{{aaa(r.id_senal).img}}" style="width: 90%;">
                 </div>
-                <div class="col s9">hola</div>
+                <div class="col s9">{{aaa(r.id_senal).nombre}}</div>
             </div>
         </div>
 

@@ -3,13 +3,26 @@
  */
 
 
-angular.module('servitecWeb', [])
-    .controller('MapCtrl', function ($scope, $timeout)
+angular.module('servitecWeb', ['reporteSenalService', 'configService','modeloService'])
+    .controller('MapCtrl', function ($scope, $timeout,$http, reporteSenalService,$interval)
     {
+        var servidor = 'http://localhost:8080/servitecserver/index.php/ReportesRest/obtenerReportes'
+
+        $http.get(servidor)
+            .success(function(data){
+                $scope.reportes = data;
+                reporteSenalService.setReportes(data);
+            })
+            .error(function(error,status,headers,config){
+                console.log(error);
+            });
+
+
         var latLng;
         var map;
         angular.element(document).ready(function ()
         {
+
             var nav_size = $('nav').height();
             var window_size = $(window).height();
             $('#map').height(window_size - nav_size - 10);
@@ -18,6 +31,7 @@ angular.module('servitecWeb', [])
             latLng = new google.maps.LatLng({lat: $scope.lat, lng: $scope.lng});
             $scope.mostrarMapa();
 
+            $scope.hilo();
         });
 
         $scope.mostrarMapa = function(){
@@ -32,6 +46,30 @@ angular.module('servitecWeb', [])
             },3000);
 
         };
+
+        $scope.hilo = function(){
+            var i = 0;
+            $interval(function(){
+                $http.get(servidor)
+                    .success(function(data){
+                        $scope.reportes = data;
+                        reporteSenalService.setReportes(data);
+                    })
+                    .error(function(error,status,headers,config){
+                        console.log(error);
+                    });
+            },10000);
+        };
+
+        $scope.aaa = function(id)
+        {
+            var señal = reporteSenalService.buscarSeñal(id);
+            //console.log(señal);
+            return señal;
+        };
+
+
+
 
 
     });
