@@ -10,6 +10,13 @@ class ReportesRest extends CI_Controller {
 		$this->db_model->insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones);
 	}
 
+	public function obtenerReportes()
+	{
+		$this->load->model('db_model');
+		$reportes = $this->db_model->obtenerReportes();
+		echo json_encode($reportes);
+	}
+
 	/*public function insertarReporte($reporte)
 	{
 		$my = $_POST;
