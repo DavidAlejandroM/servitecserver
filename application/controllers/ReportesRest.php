@@ -4,10 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class ReportesRest extends CI_Controller {
 
 
-	public function insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones)
+	public function insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones,$accionTomar,$idCategoria,$fecha)
 	{
 		$this->load->model('db_model');
-		$this->db_model->insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones);
+        $observaciones = urldecode($observaciones);
+        $idVisibolidad = urldecode($idVisibolidad);
+        $fecha = new Date($fecha).getTime();
+        print_r($fecha);
+
+        $this->db_model->insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones,$accionTomar,$idCategoria, $fecha);
 	}
 
 	public function obtenerReportes()
@@ -16,6 +21,7 @@ class ReportesRest extends CI_Controller {
 		$reportes = $this->db_model->obtenerReportes();
 		echo json_encode($reportes);
 	}
+
 
 	/*public function insertarReporte($reporte)
 	{
