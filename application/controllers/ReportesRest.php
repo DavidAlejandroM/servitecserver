@@ -21,8 +21,11 @@ class ReportesRest extends CI_Controller {
 		$this->load->model('db_model');
         $observaciones = urldecode($observaciones);
         $idVisibolidad = urldecode($idVisibolidad);
-        $fecha = new DateTime();
-        print_r($fecha);
+		$fecha = urldecode($fecha);
+		print_r($fecha);
+		$dateInfo = DateTime::createFromFormat('Y-m-j H:i:s', $fecha);
+		$fechaNueva = $dateInfo->format('Y-m-d h:i:s');
+		print_r($fechaNueva);
 
         $this->db_model->insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones,$accionTomar,$idCategoria, $fecha);
 	}

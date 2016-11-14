@@ -49,10 +49,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <img ng-src="{{aaa(r.id_senal).img}}" style="width: 90%;">
                 </div>
                 <div class="col s9">{{aaa(r.id_senal).nombre}}</div>
-                <div class="col s9">{{aaa(r.id_senal).nombre}}</div>
-                <div class="col s9">{{aaa(r.id_senal).nombre}}</div>
-                <div class="col s9">{{aaa(r.id_senal).nombre}}</div>
-
             </div>
         </div>
 
