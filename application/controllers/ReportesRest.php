@@ -1,7 +1,19 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+
 
 class ReportesRest extends CI_Controller {
+
+	function __construct() {
+
+		header('Access-Control-Allow-Origin: *');
+		header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+		header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+		$method = $_SERVER['REQUEST_METHOD'];
+		if($method == "OPTIONS") {
+			die();
+		}
+		parent::__construct();
+	}
 
 
 	public function insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones,$accionTomar,$idCategoria,$fecha)
@@ -20,6 +32,19 @@ class ReportesRest extends CI_Controller {
 		$this->load->model('db_model');
 		$reportes = $this->db_model->obtenerReportes();
 		echo json_encode($reportes);
+	}
+
+	public function obtenerSenales($id)
+	{
+		$this->load->model('db_model');
+		$senales = $this->db_model->obtenerSenales($id);
+		echo json_encode($senales);
+	}
+
+	public function obtenerCategorias(){
+		$this->load->model('db_model');
+		$categorias = $this->db_model->obtenerCategorias();
+		echo json_encode($categorias);
 	}
 
 
