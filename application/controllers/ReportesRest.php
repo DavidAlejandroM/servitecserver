@@ -22,6 +22,33 @@ class ReportesRest extends CI_Controller {
 		echo json_encode($reportes);
 	}
 
+	public function obtenerSenales($id){
+		/*
+        id: 1,
+        nombre: "Pare",
+        img: "img/senales/sr-01.png",
+        categoria: 1
+       */
+
+		$this->load->model('db_model');
+		$senales = $this->db_model->obtenerSenales($id);
+
+		$arraySenal = array();
+		foreach($senales as $senal){
+			$a = array(
+					"id" => $senal->id_senal,
+					"nombre" => $senal->nombre,
+					"img" => $senal->icono,
+					"categoria" => $senal->id_categoria
+			);
+			//print_r($a);
+			array_push($arraySenal,$a);
+		}
+
+
+		echo json_encode($arraySenal);
+	}
+
 
 	/*public function insertarReporte($reporte)
 	{
