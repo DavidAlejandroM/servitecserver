@@ -7,21 +7,13 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService','modeloSer
     .controller('MapCtrl', function ($scope, $timeout,$http, reporteSenalService,$interval)
     {
         var servidor = 'http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerReportes'
-
-        $http.get(servidor)
-            .success(function(data){
-                $scope.reportes = data;
-                reporteSenalService.setReportes(data);
-            })
-            .error(function(error,status,headers,config){
-                console.log(error);
-            });
-
+        $scope.reportes = null;
 
         var latLng;
         var map;
         angular.element(document).ready(function ()
         {
+           // $scope.getReportes();
 
             var nav_size = $('nav').height();
             var window_size = $(window).height();
@@ -50,15 +42,8 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService','modeloSer
         $scope.hilo = function(){
             var i = 0;
             $interval(function(){
-                $http.get(servidor)
-                    .success(function(data){
-                        $scope.reportes = data;
-                        reporteSenalService.setReportes(data);
-                    })
-                    .error(function(error,status,headers,config){
-                        console.log(error);
-                    });
-            },10000);
+                //$scope.getReportes();
+            },20000);
         };
 
         $scope.aaa = function(id)
@@ -67,6 +52,17 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService','modeloSer
             //console.log(señal);
             return señal;
         };
+
+        $scope.getReportes = function(){
+            $http.get(servidor)
+                .success(function(data){
+                    $scope.reportes = data;
+                    reporteSenalService.setReportes(data);
+                })
+                .error(function(error,status,headers,config){
+                    console.log(error);
+                });
+        }
 
 
 
