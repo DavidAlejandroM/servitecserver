@@ -40,15 +40,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="row">
 
         <div class="col s8 z-depth-2" id="map">
-
         </div>
 
         <div class="col s4" id="itemReporte">
-            <div class="row valign-wrapper item-reporte z-depth-1" ng-repeat="r in reportes">
+            <div clase="table-responsive-vertical shadow-z-1">
+                <table id="table" class="table table-hover table-mc-light-blue">
+                    <thead>
+                    <tr>
+                        <th>Icono</th>
+                        <th>ID</th>
+                        <th>Fecha</th>
+                        <th>Categoria</th>
+                        <th>Nombre</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="r in reportes">
+                        <tr>
+
+                            <td data-title="Icono">{{buscarSenal(r.id_senal)}}</td>
+                            <td data-title="ID">{{r.id_senal}}</td>
+                            <td data-title="Fecha">{{r.fecha}}</td>
+                            <td data-title="Categoria">{{categoriaSenal}}</td>
+                            <td data-title="Nombre">{{nameSenal}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row valign-wrapper item-reporte z-depth-1" >
                 <div class="col s3">
-                    <img ng-src="{{aaa(r.id_senal).img}}" style="width: 90%;">
+
                 </div>
-                <div class="col s9">{{aaa(r.id_senal).nombre}}</div>
+
+
             </div>
         </div>
 

@@ -16,80 +16,6 @@ angular.module('reporteSenalService', [])
       observaciones: null
     };
 
-    var senalesReglamentaria = [
-      {
-        id: 1,
-        nombre: "Pare",
-        img: "img/senales/sr-01.png",
-        categoria: 1
-      },
-      {
-        id: 2,
-        nombre: "Ceda el paso",
-        img: "img/senales/sr-02.png",
-        categoria: 1
-      },
-      {
-        id: 3,
-        nombre: "Siga de frente",
-        img: "img/senales/sr-03.png",
-        categoria: 1
-      },
-      {
-        id: 4,
-        nombre: "No pase",
-        img: "img/senales/sr-04.png",
-        categoria: 1
-      },
-      {
-        id: 5,
-        nombre: "05: Giro a la izq. solamente",
-        img: "img/senales/sr-05.png",
-        categoria: 1
-      },
-      {
-        id: 6,
-        nombre: "Prohibido girar a la izq.",
-        img: "img/senales/sr-06.png",
-        categoria: 1
-      },
-      {
-        id: 1,
-        nombre: "Pare",
-        img: "img/senales/sr-01.png",
-        categoria: 1
-      },
-      {
-        id: 2,
-        nombre: "Ceda el paso",
-        img: "img/senales/sr-02.png",
-        categoria: 1
-      },
-      {
-        id: 3,
-        nombre: "Siga de frente",
-        img: "img/senales/sr-03.png",
-        categoria: 1
-      },
-      {
-        id: 4,
-        nombre: "No pase",
-        img: "img/senales/sr-04.png",
-        categoria: 1
-      },
-      {
-        id: 5,
-        nombre: "05: Giro a la izq. solamente",
-        img: "img/senales/sr-05.png",
-        categoria: 1
-      },
-      {
-        id: 6,
-        nombre: "Prohibido girar a la izq.",
-        img: "img/senales/sr-06.png",
-        categoria: 1
-      }
-    ]
 
     this.getReporte = function()
     {
@@ -195,15 +121,17 @@ angular.module('reporteSenalService', [])
     this.setReportes = function(rep){
 
       reportes = rep;
-      console.log(reportes);
+
     };
 
-    this.buscarSeñal = function(id){
-      for(var i = 0; i< senalesReglamentaria.length;i++){
 
-        if(i == id)
+
+    this.buscarSeñalReporte = function(id){
+      for(var i = 0; i< reportes.length;i++){
+
+        if(reportes[i].id_senal == id)
         {
-          return senalesReglamentaria[i];
+          return reportes[i];
         }
       }
     };
