@@ -195,7 +195,7 @@ angular.module('reporteSenalService', [])
     this.setReportes = function(rep){
 
       reportes = rep;
-      //console.log(reportes);
+      console.log(reportes);
     };
 
     this.buscarSeñal = function(id){

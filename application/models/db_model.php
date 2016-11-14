@@ -6,7 +6,7 @@ class db_model extends CI_Model
         return $q->result();
     }
     
-    public function insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones){
+    public function insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones,$accionTomar,$idCategoria,$fecha){
         $this->db->set('id_senal', $idSenal);
         $this->db->set('latitud', $lat);
         $this->db->set('longitud', $lng);
@@ -16,6 +16,11 @@ class db_model extends CI_Model
         $this->db->set('visibilidad', $idVisibolidad);
         $this->db->set('foto', $foto);
         $this->db->set('observaciones', $observaciones);
+        $this->db->set('accionTomar',$accionTomar);
+        $this->db->set('id_categoria',$idCategoria);
+        $this->db->set('fecha',$fecha);
+
+
 
         $this->db->insert('tbl_reportes_senal');
 
