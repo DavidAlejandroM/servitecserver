@@ -42,9 +42,51 @@ class db_model extends CI_Model
     }
 
     public function obtenerSenales($id){
+        /*
+        id: 1,
+        nombre: "Pare",
+        img: "img/senales/sr-01.png",
+        categoria: 1
+       */
         $this->db->where('id_categoria', $id);
         $q = $q = $this->db->get('tbl_senal');
-
-        return $q->result();
+        $senales = $q->result();
+        $arraySenal = array();
+        foreach($senales as $senal){
+            $a = array(
+                "id" => $senal->id_senal,
+                "nombre" => $senal->nombre,
+                "img" => $senal->icono,
+                "categoria" => $senal->id_categoria
+            );
+            //print_r($a);
+            array_push($arraySenal,$a);
+        }
+        return $arraySenal;
     }
+
+    public function obtenerCategorias(){
+        /*
+         id: 1,
+        name: "Señal Reglamentaria",
+        icon: "hola"
+       */
+        $q = $q = $this->db->get('tbl_categoria');
+        $categoria = $q->result();
+        $arrayCategoria = array();
+        foreach($categoria as $cate){
+            $a = array(
+                "id" => $cate->id_categoria,
+                "name" => $cate->nombre,
+                "icon" => null
+            );
+            //print_r($a);
+            array_push($arrayCategoria,$a);
+        }
+        return $arrayCategoria;
+    }
+
+
+
+
 }
