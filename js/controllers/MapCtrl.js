@@ -77,11 +77,11 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService','modeloSer
     console.log("Seañl id"+id);
      var señal = reporteSenalService.buscarSeñalReporte(id);
        $scope.getSenalHttp(id);
-       $scope.getCategoriasHttp(señal.id_categoria);
+    //   $scope.getCategoriasHttp(señal.id_categoria);
 
-       $scope.categoriaSenal = $scope.categoriaSenal.nombre;
+   //    $scope.categoriaSenal = $scope.categoriaSenal.nombre;
        $scope.nameSenal = señal.nombre;
-        $scope.icono =  señal.icono;
+      //  $scope.icono =  señal.icono;
 
      };
 

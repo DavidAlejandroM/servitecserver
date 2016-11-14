@@ -44,17 +44,19 @@ class ReportesRest extends CI_Controller {
 		echo json_encode($senales);
 	}
 
+	public function obtenerSenal($id)
+	{
+		$this->load->model('db_model');
+		$senales = $this->db_model->obtenerSenal($id);
+		echo json_encode($senales);
+	}
+
 	public function obtenerCategorias(){
 		$this->load->model('db_model');
 		$categorias = $this->db_model->obtenerCategorias();
 		echo json_encode($categorias);
 	}
 
-    public function obtenerSenal($idSenal){
-        $this->load->model('db_model');
-        $senal = $this->db_model->obtenerSenal($idSenal);
-        echo json_encode($senal);
-    }
 
     public function obtenerCategoria($idCat){
         $this->load->model('db_model');
