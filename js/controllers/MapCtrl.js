@@ -6,7 +6,7 @@
 angular.module('servitecWeb', ['reporteSenalService', 'configService','modeloService'])
     .controller('MapCtrl', function ($scope, $timeout,$http, reporteSenalService,$interval)
     {
-        var servidor = 'http://localhost:8080/servitecserver/index.php/ReportesRest/obtenerReportes'
+        var servidor = 'http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerReportes'
 
         $http.get(servidor)
             .success(function(data){

@@ -33,9 +33,16 @@ class db_model extends CI_Model
         return $q->result();
     }
 
-    public function obtenerSeñal($id)
+    public function obtenerSenal($id)
     {
         $this->db->where('id_senal', $id);
+        $q = $q = $this->db->get('tbl_senal');
+
+        return $q->result();
+    }
+
+    public function obtenerSenales($id){
+        $this->db->where('id_categoria', $id);
         $q = $q = $this->db->get('tbl_senal');
 
         return $q->result();
