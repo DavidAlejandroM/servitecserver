@@ -85,6 +85,13 @@ class db_model extends CI_Model
         }
         return $arrayCategoria;
     }
+    public function obtenerCategoria($id)
+    {
+        $this->db->where('id_categoria', $id);
+        $q = $q = $this->db->get('tbl_categoria');
+
+        return $q->result();
+    }
 
 
 
