@@ -1,6 +1,13 @@
 <IfModule authz_core_module>
-    Require all denied
+    Access-Control-Allow-Headers: Content-Type
+	Access-Control-Allow-Methods: GET, POST, OPTIONS
+Access-Control-Allow-Origin: *
 </IfModule>
 <IfModule !authz_core_module>
-    Deny from all
+    Access-Control-Allow-Headers: Content-Type
+    Access-Control-Allow-Methods: GET, POST, OPTIONS
+    Access-Control-Allow-Origin: *
+</IfModule>
+<IfModule mod_headers.c>
+   Header set Access-Control-Allow-Origin "*"
 </IfModule>

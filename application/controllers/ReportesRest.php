@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+
 
 class ReportesRest extends CI_Controller {
 
@@ -44,8 +44,6 @@ class ReportesRest extends CI_Controller {
 			//print_r($a);
 			array_push($arraySenal,$a);
 		}
-
-
 		echo json_encode($arraySenal);
 	}
 
