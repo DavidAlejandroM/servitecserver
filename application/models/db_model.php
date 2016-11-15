@@ -93,6 +93,43 @@ class db_model extends CI_Model
         return $q->result();
     }
 
+    public function obtenerReportesPlataforma()
+    {
+        $q = $q = $this->db->get('tbl_reportes_senal');
+        $result = $q->result();
+
+        $arrayresult = array();
+        foreach($result as $r)
+        {
+            $resultSenal = $this->obtenerSenal($r->id_senal);
+            $resultCategoria = $this->obtenerCategoria($r->id_categoria);
+            //print_r($resultSenal);
+            //print_r($resultCategoria[0]->nombre);
+
+            $a = array(
+                "id_reporte" => $r->id_reporte,
+                "id_senal" => $r->id_senal,
+                "nombre" => $resultSenal[0]->nombre,
+                "icono" => $resultSenal[0]->icono,
+                "latitud" => $r->latitud,
+                "longitud" => $r->longitud,
+                "fecha" => $r->fecha,
+                "foto" => $r->foto,
+                "tablero" => $r->tablero,
+                "pedestal" => $r->pedestal,
+                "anclaje" => $r->anclaje,
+                "visibilidad" => $r->visibilidad,
+                "observaciones" => $r->observaciones,
+                "accionTomar" => $r->accionTomar,
+                "id_categoria" => $r->id_categoria,
+                "nombre_categoria" => $resultCategoria[0]->nombre
+            );
+            array_push($arrayresult,$a);
+        }
+      // print_r($arrayresult);
+        return $arrayresult;
+    }
+
 
 
 

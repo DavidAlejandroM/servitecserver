@@ -54,15 +54,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>Nombre</th>
                     </tr>
                     </thead>
-                    <tbody ng-repeat="r in reportes" >
-                        <tr ng-init="buscarSenal(r.id_senal)">
+                    <tbody  >
+                       <!-- <tr ng-init="buscarSenal(r.id_senal)">
                             <td data-title="Icono"><img src=""></td>
                             <td data-title="ID">{{r.id_senal}}</td>
                             <td data-title="Fecha">{{r.fecha}}</td>
                             <td data-title="Categoria">{{categoriaSenal}}</td>
                             <td data-title="Nombre">{{nameSenal}}</td>
 
-                        </tr>
+                        </tr>-->
+                       <tr class="tabla-reportes-row" ng-repeat="r in reportes">
+                           <td data-title="Icono"><img src="img/senales/{{r.icono}}" style="height: 70px;"></td>
+                           <td data-title="ID">{{r.id_senal}}</td>
+                           <td data-title="Fecha">{{r.fecha}}</td>
+                           <td data-title="Categoria">{{r.nombre_categoria}}</td>
+                           <td data-title="Nombre">{{r.nombre}}</td>
+                       </tr>
                     </tbody>
                 </table>
             </div>

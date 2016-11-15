@@ -2,8 +2,6 @@ angular.module('reporteSenalService', [])
   .service('reporteSenalService',['modeloService',function ($http,modeloService)
   {
     var reportes = [];
-    var urlCategoria = 'http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerCategoria';
-    var urlSenal = 'http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerSenal';
     var index=0;
     var reporte = {
       idSenal: null,
@@ -100,20 +98,7 @@ angular.module('reporteSenalService', [])
       return reporte.observaciones;
     };
     // ($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto)
-    this.httpReporte = function($http)
-    {
 
-      var strReporte = reporte.idSenal+'/'+reporte.latitud+'/'+reporte.longitud+'/'+reporte.tablero+'/'+reporte.pedestal+'/'+reporte.anclaje+'/'+
-          reporte.visibilidad+'/'+reporte.foto+'/'+reporte.observaciones;
-
-      $http.post('http://192.168.1.100:8000/servitecserver/index.php/ReportesRest/insertarReporte/'+strReporte)
-          .success(function(data,status,headers,config){
-            console.log(data);
-          })
-          .error(function(error,status,headers,config){
-            console.log(error);
-          });
-    };
 
     this.agregarReporte= function(){
       reportes.push(reporte);
@@ -125,44 +110,5 @@ angular.module('reporteSenalService', [])
       reportes = rep;
 
     };
-
-
-    this.buscarSeñalReporte = function(id){
-      for(var i = 0; i< reportes.length;i++){
-
-        if(reportes[i].id_senal == id)
-        {
-          return reportes[i];
-        }
-      }
-    };
-
-
-      this.getCategoriaHttp = function(id){
-
-          $http.get(urlCategoria+'/'+id)
-              .success(function(data){
-                  return data;
-              })
-              .error(function(error){
-                  alert('error servitec CATEGORIA: '+error);
-              });
-
-      };
-
-
-      this.getSenalHttp = function(id){
-
-          $http.get(urlSenal+'/'+id)
-              .success(function(data){
-                 return data;
-                  console.log(data);
-              })
-              .error(function(error){
-                  alert('error servitec Obtener Señal: '+error);
-              });
-
-      };
-
   }
   ]);
