@@ -6,21 +6,24 @@
 angular.module('servitecWeb', ['reporteSenalService', 'configService','modeloService'])
     .controller('MapCtrl', function ($scope, $timeout,$http, reporteSenalService,$interval)
     {
-        var servidor = 'http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerReportes'
+        var servidor = 'http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerReportes';
+        var urlCategoria = 'http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerCategoria';
+        var urlSenal = 'http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerSenal';
+       var cat;
         $scope.reportes = null;
         $scope.senalBD = null;
 
-        $scope.categoria = null;
+        $scope.categoriaNombre = null;
         $scope.nameSenal = null;
-        $scope.icono = null;
+        $scope.icon = null;
 
-        var señal;
+        $scope.señal;
         var latLng;
         var map;
         angular.element(document).ready(function ()
         {
             $scope.getReportes();
-            $scope.getCategoriasHttp();
+
 
             var nav_size = $('nav').height();
             var window_size = $(window).height();
@@ -71,45 +74,51 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService','modeloSer
                 .error(function(error,status,headers,config){
                     console.log(error);
                 });
-        }
+        };
 
-     $scope.buscarSenal = function(id){
-    console.log("Seañl id"+id);
-     var señal = reporteSenalService.buscarSeñalReporte(id);
-       $scope.getSenalHttp(id);
-    //   $scope.getCategoriasHttp(señal.id_categoria);
 
-   //    $scope.categoriaSenal = $scope.categoriaSenal.nombre;
-       $scope.nameSenal = señal.nombre;
-      //  $scope.icono =  señal.icono;
+        $scope.getCategoriaHttp = function(id){
 
-     };
-
-        $scope.getCategoriasHttp = function(id){
-
-            $http.get('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerCategoria/'+id)
+            $http.get(urlCategoria+'/'+id)
                 .success(function(data){
-                    $scope.categoriaSenal = data;
-                    console.log(data);
+                    return data;
+
                 })
                 .error(function(error){
                     alert('error servitec: '+error);
                 });
 
         };
+
 
         $scope.getSenalHttp = function(id){
 
-            $http.get('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerSenal/'+id)
+            $http.get(urlSenal+'/'+id)
                 .success(function(data){
-                    señal = data;
-                    console.log(data);
+                    $scope.senalBD = data;
+
                 })
                 .error(function(error){
-                    alert('error servitec: '+error);
+                    alert('error servitec Obtener Señal: '+error);
                 });
 
         };
+
+     $scope.buscarSenal = function(id){
+
+     var señal = reporteSenalService.buscarSeñalReporte(id);
+        cat= $scope.getCategoriaHttp(señal.id_categoria);
+
+      console.log("Categoria señal"+ cat);
+       $scope.getSenalHttp(id);
+      $scope.señal = $scope.getSenalHttp(id);
+       console.log("señal " +$scope.señal);
+     //  $scope.nameSenal = señal.nombre;
+     //  $scope.icon =  señal.icono;
+
+     };
+
+
 
 
 
