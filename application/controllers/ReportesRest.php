@@ -64,6 +64,13 @@ class ReportesRest extends CI_Controller {
         echo json_encode($categoria);
     }
 
+	public function obtenerReportesPlataforma()
+	{
+		$this->load->model('db_model');
+		$reportes = $this->db_model->obtenerReportesPlataforma();
+		echo json_encode($reportes);
+	}
+
 
 	/*public function insertarReporte($reporte)
 	{
