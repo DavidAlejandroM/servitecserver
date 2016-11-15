@@ -40,6 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="row z-position-1">
 
         <div class="col s8 z-depth-2" id="map">
+            <div style="height: 200px;background-color: #00b0ff;width: 60%;position: relative; z-index: 3;"></div>
         </div>
 
         <div class="col s4" id="itemReporte">
@@ -55,14 +56,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </tr>
                     </thead>
                     <tbody>
-                    <!-- <tr ng-init="buscarSenal(r.id_senal)">
-                         <td data-title="Icono"><img src=""></td>
-                         <td data-title="ID">{{r.id_senal}}</td>
-                         <td data-title="Fecha">{{r.fecha}}</td>
-                         <td data-title="Categoria">{{categoriaSenal}}</td>
-                         <td data-title="Nombre">{{nameSenal}}</td>
-
-                     </tr>-->
                     <tr class="tabla-reportes-row" ng-repeat="r in reportes" ng-click="clickReporte(r)">
                         <td data-title="Icono"><img src="img/senales/{{r.icono}}" style="height: 70px;"></td>
                         <td data-title="ID">{{r.id_senal}}</td>
@@ -75,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
     </div>
-    <div style="height: 200px;background-color: #00b0ff;width: 60%;"></div>
+
 
 
 </div>
