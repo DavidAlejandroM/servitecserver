@@ -47,17 +47,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <table id="table" class="table table-hover table-mc-light-blue">
                     <thead>
                     <tr>
-                        <th>Icono</th>
+                        <th></th>
                         <th>ID</th>
                         <th>Fecha</th>
                         <th>Categoria</th>
                         <th>Nombre</th>
                     </tr>
                     </thead>
-                    <tbody ng-repeat="r in reportes">
-                        <tr>
-
-                            <td data-title="Icono">{{buscarSenal(r.id_senal)}}</td>
+                    <tbody ng-repeat="r in reportes" >
+                        <tr ng-init="buscarSenal(r.id_senal)">
+                            <td data-title="Icono"><img src=""></td>
                             <td data-title="ID">{{r.id_senal}}</td>
                             <td data-title="Fecha">{{r.fecha}}</td>
                             <td data-title="Categoria">{{categoriaSenal}}</td>
@@ -68,13 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </table>
             </div>
 
-            <div class="row valign-wrapper item-reporte z-depth-1" >
-                <div class="col s3">
 
-                </div>
-
-
-            </div>
         </div>
 
     </div>

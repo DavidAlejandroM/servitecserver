@@ -2,6 +2,8 @@ angular.module('reporteSenalService', [])
   .service('reporteSenalService',['modeloService',function ($http,modeloService)
   {
     var reportes = [];
+    var urlCategoria = 'http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerCategoria';
+    var urlSenal = 'http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerSenal';
     var index=0;
     var reporte = {
       idSenal: null,
@@ -125,7 +127,6 @@ angular.module('reporteSenalService', [])
     };
 
 
-
     this.buscarSeñalReporte = function(id){
       for(var i = 0; i< reportes.length;i++){
 
@@ -135,6 +136,33 @@ angular.module('reporteSenalService', [])
         }
       }
     };
+
+
+      this.getCategoriaHttp = function(id){
+
+          $http.get(urlCategoria+'/'+id)
+              .success(function(data){
+                  return data;
+              })
+              .error(function(error){
+                  alert('error servitec CATEGORIA: '+error);
+              });
+
+      };
+
+
+      this.getSenalHttp = function(id){
+
+          $http.get(urlSenal+'/'+id)
+              .success(function(data){
+                 return data;
+                  console.log(data);
+              })
+              .error(function(error){
+                  alert('error servitec Obtener Señal: '+error);
+              });
+
+      };
 
   }
   ]);
