@@ -17,18 +17,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="js/lib/materialize.min.js"></script>
     <script src="js/lib/angular.min.js"></script>
 
-<!--controladores-->
+    <!--controladores-->
     <script src="js/controllers/MapCtrl.js"></script>
-<!--services-->
+    <!--services-->
     <script src="js/services/reporteSenalService.js"></script>
     <script src="js/services/configService.js"></script>
     <script src="js/services/modeloService.js"></script>
 </head>
-<body ng-app="servitecWeb" >
+<body ng-app="servitecWeb">
 <div ng-controller="MapCtrl">
     <nav>
         <div class="nav-wrapper colorApp">
-            <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
+            <a href="#!" class="brand-logo"><i class="material-icons">directions_car</i>Servitec</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href=""><i class="material-icons">search</i></a></li>
                 <li><a href=""><i class="material-icons">view_module</i></a></li>
@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </ul>
         </div>
     </nav>
-    <div class="row">
+    <div class="row z-position-1">
 
         <div class="col s8 z-depth-2" id="map">
         </div>
@@ -54,30 +54,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>Nombre</th>
                     </tr>
                     </thead>
-                    <tbody  >
-                       <!-- <tr ng-init="buscarSenal(r.id_senal)">
-                            <td data-title="Icono"><img src=""></td>
-                            <td data-title="ID">{{r.id_senal}}</td>
-                            <td data-title="Fecha">{{r.fecha}}</td>
-                            <td data-title="Categoria">{{categoriaSenal}}</td>
-                            <td data-title="Nombre">{{nameSenal}}</td>
+                    <tbody>
+                    <!-- <tr ng-init="buscarSenal(r.id_senal)">
+                         <td data-title="Icono"><img src=""></td>
+                         <td data-title="ID">{{r.id_senal}}</td>
+                         <td data-title="Fecha">{{r.fecha}}</td>
+                         <td data-title="Categoria">{{categoriaSenal}}</td>
+                         <td data-title="Nombre">{{nameSenal}}</td>
 
-                        </tr>-->
-                       <tr class="tabla-reportes-row" ng-repeat="r in reportes">
-                           <td data-title="Icono"><img src="img/senales/{{r.icono}}" style="height: 70px;"></td>
-                           <td data-title="ID">{{r.id_senal}}</td>
-                           <td data-title="Fecha">{{r.fecha}}</td>
-                           <td data-title="Categoria">{{r.nombre_categoria}}</td>
-                           <td data-title="Nombre">{{r.nombre}}</td>
-                       </tr>
+                     </tr>-->
+                    <tr class="tabla-reportes-row" ng-repeat="r in reportes" ng-click="clickReporte(r)">
+                        <td data-title="Icono"><img src="img/senales/{{r.icono}}" style="height: 70px;"></td>
+                        <td data-title="ID">{{r.id_senal}}</td>
+                        <td data-title="Fecha">{{r.fecha}}</td>
+                        <td data-title="Categoria">{{r.nombre_categoria}}</td>
+                        <td data-title="Nombre">{{r.nombre}}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
-
-
         </div>
-
     </div>
+    <div style="height: 200px;background-color: #00b0ff;width: 60%;"></div>
 
 
 </div>
