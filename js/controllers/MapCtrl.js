@@ -55,6 +55,7 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
             $http.get(servidor)
                 .success(function (data) {
                     $scope.reportes = data;
+                    $scope.crearMarcadores(data);
                     reporteSenalService.setReportes(data);
                     console.log(data);
                 })
@@ -62,6 +63,32 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
                     console.log(error);
                 });
         };
+
+        $scope.crearMarcadores = function(reportes){
+            for(var i = 0; i< reportes.length;i++)
+            {
+                $scope.crearMarcador(reportes[i]);
+            }
+        };
+
+        $scope.crearMarcador= function(reporte)
+        {
+            var lat = parseFloat(reporte.latitud);
+            var lng = parseFloat(reporte.longitud);
+
+            console.log(lat + lng);
+
+
+
+            var latlon = new google.maps.LatLng({lat: lat, lng: lng});
+            var marcador = new google.maps.Marker({
+                draggable: false,
+                animation: google.maps.Animation.DROP,
+                position: latlon,
+                map: map,
+                title: reporte.id_reporte});
+        };
+
 
 
     });
