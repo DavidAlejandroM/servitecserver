@@ -90,7 +90,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <h5>{{reporteSeleccionado.nombre_categoria}}</h5>
                         </div>
                         <div class="col s2">
-                            <img src="img/senales/{{reporteSeleccionado.icono}}"  style="height: 70px;">
+                            <img src="img/senales/{{reporteSeleccionado.icono}}" align="right"  style="height: 70px;">
                         </div>
                     </div>
                     <p>

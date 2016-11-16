@@ -28,7 +28,7 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
              window_size = $(window).height();
             $('#map').height(window_size - nav_size - 25);
             $('#itemReporte').height(window_size - nav_size - 25);
-            $('#contentSeleccionado').height(0);
+            $('#contentSeleccionado').hide();
 
 
             latLng = new google.maps.LatLng({lat: $scope.lat, lng: $scope.lng});
