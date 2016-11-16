@@ -17,21 +17,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="js/lib/materialize.min.js"></script>
     <script src="js/lib/angular.min.js"></script>
 
-<!--controladores-->
+    <!--controladores-->
     <script src="js/controllers/MapCtrl.js"></script>
-<!--services-->
+    <!--services-->
     <script src="js/services/reporteSenalService.js"></script>
     <script src="js/services/configService.js"></script>
     <script src="js/services/modeloService.js"></script>
 </head>
-<body ng-app="servitecWeb" >
-<div ng-controller="MapCtrl">
+<body ng-app="servitecWeb">
+<div ng-controller="MapCtrl" style="overflow-y: hidden">
     <nav>
         <div class="nav-wrapper colorApp">
-            <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
+            <a href="#!" class="brand-logo"><i class="material-icons">directions_car</i>Servitec</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href=""><i class="material-icons">search</i></a></li>
-                <li><a href=""><i class="material-icons">view_module</i></a></li>
+                <li><a href=""><i class="material-icons" ng-click="clickBuscar()">search</i></a></li>
+                <li><a href=""><i class="material-icons" ng-click="clickMostrarTodo()">view_module</i></a></li>
                 <li><a href=""><i class="material-icons">refresh</i></a></li>
                 <li><a href=""><i class="material-icons">more_vert</i></a></li>
             </ul>
@@ -40,10 +40,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="row">
 
         <div class="col s8 z-depth-2" id="map">
+
         </div>
 
-        <div class="col s4" id="itemReporte">
-            <div clase="table-responsive-vertical shadow-z-1">
+        <div class="col s4" id="itemReporte" style="overflow-y: auto">
+            <div class="z-position-2 colorApp" id="div-buscar" style="width: 100%;height: 100px;position: relative;display: none">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="icon_prefix" type="text" class="validate" ng-model="buscar">
+                    <label for="icon_prefix">Buscar</label>
+                </div>
+            </div>
+            <div clase="table-responsive-vertical z-position-1">
                 <table id="table" class="table table-hover table-mc-light-blue">
                     <thead>
                     <tr>
@@ -54,30 +62,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>Nombre</th>
                     </tr>
                     </thead>
-                    <tbody  >
-                       <!-- <tr ng-init="buscarSenal(r.id_senal)">
-                            <td data-title="Icono"><img src=""></td>
-                            <td data-title="ID">{{r.id_senal}}</td>
-                            <td data-title="Fecha">{{r.fecha}}</td>
-                            <td data-title="Categoria">{{categoriaSenal}}</td>
-                            <td data-title="Nombre">{{nameSenal}}</td>
-
-                        </tr>-->
-                       <tr class="tabla-reportes-row" ng-repeat="r in reportes">
-                           <td data-title="Icono"><img src="img/senales/{{r.icono}}" style="height: 70px;"></td>
-                           <td data-title="ID">{{r.id_senal}}</td>
-                           <td data-title="Fecha">{{r.fecha}}</td>
-                           <td data-title="Categoria">{{r.nombre_categoria}}</td>
-                           <td data-title="Nombre">{{r.nombre}}</td>
-                       </tr>
+                    <tbody>
+                    <tr class="tabla-reportes-row" ng-repeat="r in reportes | filter: buscar" ng-click="clickReporte(r)">
+                        <td data-title="Icono"><img src="img/senales/{{r.icono}}" style="height: 70px;"></td>
+                        <td data-title="ID">{{r.id_senal}}</td>
+                        <td data-title="Fecha">{{r.fecha}}</td>
+                        <td data-title="Categoria">{{r.nombre_categoria}}</td>
+                        <td data-title="Nombre">{{r.nombre}}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
-
-
         </div>
-
     </div>
+
 
 
 </div>

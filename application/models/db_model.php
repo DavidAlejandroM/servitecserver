@@ -95,6 +95,7 @@ class db_model extends CI_Model
 
     public function obtenerReportesPlataforma()
     {
+        $this->db->order_by('fecha','DESC');
         $q = $q = $this->db->get('tbl_reportes_senal');
         $result = $q->result();
 
