@@ -18,8 +18,8 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
 
             var nav_size = $('nav').height();
             var window_size = $(window).height();
-            $('#map').height(window_size - nav_size - 10);
-
+            $('#map').height(window_size - nav_size - 25);
+            $('#itemReporte').height(window_size - nav_size - 25);
 
             latLng = new google.maps.LatLng({lat: $scope.lat, lng: $scope.lng});
             $scope.mostrarMapa();
@@ -43,6 +43,12 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
         $scope.hilo = function () {
             $interval(function () {
                 $scope.getReportes();
+
+                var nav_size = $('nav').height();
+                var window_size = $(window).height();
+                $('#map').height(window_size - nav_size - 25);
+                $('#itemReporte').height(window_size - nav_size - 25);
+
             }, 20000);
         };
 
@@ -99,6 +105,14 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
             {
                 marcadores[i].setMap(map);
             }
+        };
+
+        $scope.clickBuscar = function(){
+          $('#div-buscar').slideToggle(200);
+        };
+
+        $scope.clickMostrarTodo = function(){
+            $scope.eliminarMarcadores(map);
         }
 
 

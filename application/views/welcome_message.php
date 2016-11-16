@@ -25,26 +25,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="js/services/modeloService.js"></script>
 </head>
 <body ng-app="servitecWeb">
-<div ng-controller="MapCtrl">
+<div ng-controller="MapCtrl" style="overflow-y: hidden">
     <nav>
         <div class="nav-wrapper colorApp">
             <a href="#!" class="brand-logo"><i class="material-icons">directions_car</i>Servitec</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href=""><i class="material-icons">search</i></a></li>
-                <li><a href=""><i class="material-icons">view_module</i></a></li>
+                <li><a href=""><i class="material-icons" ng-click="clickBuscar()">search</i></a></li>
+                <li><a href=""><i class="material-icons" ng-click="clickMostrarTodo()">view_module</i></a></li>
                 <li><a href=""><i class="material-icons">refresh</i></a></li>
                 <li><a href=""><i class="material-icons">more_vert</i></a></li>
             </ul>
         </div>
     </nav>
-    <div class="row z-position-1">
+    <div class="row">
 
         <div class="col s8 z-depth-2" id="map">
-            <div style="height: 200px;background-color: #00b0ff;width: 60%;position: relative; z-index: 3;"></div>
+
         </div>
 
-        <div class="col s4" id="itemReporte">
-            <div clase="table-responsive-vertical shadow-z-1">
+        <div class="col s4" id="itemReporte" style="overflow-y: auto">
+            <div class="z-position-2 colorApp" id="div-buscar" style="width: 100%;height: 100px;position: relative;display: none">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="icon_prefix" type="text" class="validate" ng-model="buscar">
+                    <label for="icon_prefix">Buscar</label>
+                </div>
+            </div>
+            <div clase="table-responsive-vertical z-position-1">
                 <table id="table" class="table table-hover table-mc-light-blue">
                     <thead>
                     <tr>
@@ -56,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="tabla-reportes-row" ng-repeat="r in reportes" ng-click="clickReporte(r)">
+                    <tr class="tabla-reportes-row" ng-repeat="r in reportes | filter: buscar" ng-click="clickReporte(r)">
                         <td data-title="Icono"><img src="img/senales/{{r.icono}}" style="height: 70px;"></td>
                         <td data-title="ID">{{r.id_senal}}</td>
                         <td data-title="Fecha">{{r.fecha}}</td>
