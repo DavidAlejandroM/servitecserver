@@ -74,6 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </table>
             </div>
         </div>
+        <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a>
     </div>
 
 
