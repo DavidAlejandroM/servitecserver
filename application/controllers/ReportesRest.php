@@ -1,7 +1,19 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+
 
 class ReportesRest extends CI_Controller {
+
+	function __construct() {
+
+		header('Access-Control-Allow-Origin: *');
+		header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+		header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+		$method = $_SERVER['REQUEST_METHOD'];
+		if($method == "OPTIONS") {
+			die();
+		}
+		parent::__construct();
+	}
 
 
 	public function insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones,$accionTomar,$idCategoria,$fecha)
@@ -9,8 +21,11 @@ class ReportesRest extends CI_Controller {
 		$this->load->model('db_model');
         $observaciones = urldecode($observaciones);
         $idVisibolidad = urldecode($idVisibolidad);
-        $fecha = new DateTime();
-        print_r($fecha);
+		$fecha = urldecode($fecha);
+		print_r($fecha);
+		$dateInfo = DateTime::createFromFormat('Y-m-j H:i:s', $fecha);
+		$fechaNueva = $dateInfo->format('Y-m-d h:i:s');
+		print_r($fechaNueva);
 
         $this->db_model->insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones,$accionTomar,$idCategoria, $fecha);
 	}
@@ -22,31 +37,38 @@ class ReportesRest extends CI_Controller {
 		echo json_encode($reportes);
 	}
 
-	public function obtenerSenales($id){
-		/*
-        id: 1,
-        nombre: "Pare",
-        img: "img/senales/sr-01.png",
-        categoria: 1
-       */
-
+	public function obtenerSenales($id)
+	{
 		$this->load->model('db_model');
 		$senales = $this->db_model->obtenerSenales($id);
+		echo json_encode($senales);
+	}
 
-		$arraySenal = array();
-		foreach($senales as $senal){
-			$a = array(
-					"id" => $senal->id_senal,
-					"nombre" => $senal->nombre,
-					"img" => $senal->icono,
-					"categoria" => $senal->id_categoria
-			);
-			//print_r($a);
-			array_push($arraySenal,$a);
-		}
+	public function obtenerSenal($id)
+	{
+		$this->load->model('db_model');
+		$senales = $this->db_model->obtenerSenal($id);
+		echo json_encode($senales);
+	}
+
+	public function obtenerCategorias(){
+		$this->load->model('db_model');
+		$categorias = $this->db_model->obtenerCategorias();
+		echo json_encode($categorias);
+	}
 
 
-		echo json_encode($arraySenal);
+    public function obtenerCategoria($idCat){
+        $this->load->model('db_model');
+        $categoria = $this->db_model->obtenerCategoria($idCat);
+        echo json_encode($categoria);
+    }
+
+	public function obtenerReportesPlataforma()
+	{
+		$this->load->model('db_model');
+		$reportes = $this->db_model->obtenerReportesPlataforma();
+		echo json_encode($reportes);
 	}
 
 
