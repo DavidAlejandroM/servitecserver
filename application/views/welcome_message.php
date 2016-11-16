@@ -40,8 +40,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="row">
 
         <div class="col s8 z-depth-2" id="map">
-
         </div>
+
 
         <div class="col s4" id="itemReporte" style="overflow-y: auto">
             <div class="z-position-2 colorApp" id="div-buscar" style="width: 100%;height: 100px;position: relative;display: none">
@@ -62,20 +62,58 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>Nombre</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr class="tabla-reportes-row" ng-repeat="r in reportes | filter: buscar" ng-click="clickReporte(r)">
+                  <tbody>
+                  <tr class="tabla-reportes-row" ng-repeat="r in reportes | filter: buscar" ng-click="clickReporte(r)">
                         <td data-title="Icono"><img src="img/senales/{{r.icono}}" style="height: 70px;"></td>
                         <td data-title="ID">{{r.id_senal}}</td>
                         <td data-title="Fecha">{{r.fecha}}</td>
                         <td data-title="Categoria">{{r.nombre_categoria}}</td>
                         <td data-title="Nombre">{{r.nombre}}</td>
                     </tr>
-                    </tbody>
+
+                   </tbody>
                 </table>
             </div>
         </div>
-    </div>
 
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal bottom-sheet">
+            <div class="modal-content">
+                <div class="col s2">
+                    <img src="img/senales/{{reporteSeleccionado.icono}}" style="height: 70px;">
+                    <p>{{reporteSeleccionado.fecha}}</p>
+                </div>
+                <div class="col s10">
+                    <div class="row">
+                        <div class="col s10">
+                            <h4>{{reporteSeleccionado.nombre}}</h4>
+                            <h5>{{reporteSeleccionado.nombre_categoria}}</h5>
+                        </div>
+                        <div class="col s2">
+                            <img src="img/senales/{{reporteSeleccionado.icono}}" align="right"  style="height: 70px;">
+                        </div>
+                    </div>
+                    <p>
+                    <ul class="collection">
+                        <li class="collection-item">Tablero: {{reporteSeleccionado.tablero}}</li>
+                        <li class="collection-item">Pedestal: {{reporteSeleccionado.pedestal}}</li>
+                        <li class="collection-item">Anclaje: {{reporteSeleccionado.anclaje}}</li>
+                        <li class="collection-item">Visibilidad: {{reporteSeleccionado.visibilidad}}</li>
+                        <li class="collection-item">Accion a tomar: {{reporteSeleccionado.accionTomar}}</li>
+                        <li class="collection-item">Observacioens: {{reporteSeleccionado.observaciones}}</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Aceptar</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s8" id="contentSeleccionado">
+        </div>
+    </div>
 
 
 </div>
