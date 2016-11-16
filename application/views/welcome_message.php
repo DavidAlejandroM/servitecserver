@@ -80,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="modal1" class="modal bottom-sheet">
             <div class="modal-content">
                 <div class="col s2">
-                    <img src="img/senales/{{reporteSeleccionado.icono}}" style="height: 70px;">
+                    <img src="img/senales/{{reporteSeleccionado.icono}}" style="height: 150px; margin-top: 20%;margin-left: 20px;">
                     <p>{{reporteSeleccionado.fecha}}</p>
                 </div>
                 <div class="col s10">
