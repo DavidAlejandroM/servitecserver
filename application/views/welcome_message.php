@@ -106,7 +106,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
 
-<!--        <!-- Modal Structure -->-->
+<!--        <!-- Modal Structure -->
 <!--        <div id="modal1" class="modal bottom-sheet">-->
 <!--            <div class="modal-content">-->
 <!--                <div class="col s2">-->
@@ -138,7 +138,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!--            <div class="modal-footer">-->
 <!--                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Aceptar</a>-->
 <!--            </div>-->
-<!--        </div>-->-->
+<!--        </div>-->
     </div>
     <div class="row">
         <div class="col s8" id="contentSeleccionado">
