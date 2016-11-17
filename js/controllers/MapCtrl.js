@@ -26,7 +26,7 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
             $('.modal').modal();
             nav_size = $('nav').height();
              window_size = $(window).height();
-            $('#map').height(window_size - nav_size - 25);
+            $('#map-container').height(window_size - nav_size - 25);
             $('#itemReporte').height(window_size - nav_size - 25);
             $('#contentSeleccionado').hide();
 
@@ -56,7 +56,7 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
 
                 var nav_size = $('nav').height();
                 var window_size = $(window).height();
-                $('#map').height(window_size - nav_size - 25);
+                $('#map-container').height(window_size - nav_size - 25);
                 $('#itemReporte').height(window_size - nav_size - 25);
 
             }, 20000);
@@ -64,17 +64,35 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
 
         $scope.clickReporte = function(reporte)
         {
-            $('#modal1').modal('open');
-            $('#map').height(window_size - nav_size - 200);
+            //$('#modal1').modal('open');
+            //$('#map').height(window_size - nav_size - 200);
+            $('#map').animate({
+                height: "50%"
+            },200);
+            $('#div-info-reporte').animate({
+                height: "50%"
+            },200);
 
-            $scope.eliminarMarcadores(null);
-            $scope.reporteSeleccionado = reporte;
-            $scope.crearMarcador(reporte);
-            var lat = parseFloat(reporte.latitud);
-            var lng = parseFloat(reporte.longitud)
-            latLng = new google.maps.LatLng({lat: lat, lng: lng});
-            map.panTo(latLng);
-            console.log(reporte);
+            $timeout(function(){
+                $scope.eliminarMarcadores(null);
+                $scope.reporteSeleccionado = reporte;
+                $scope.crearMarcador(reporte);
+                var lat = parseFloat(reporte.latitud);
+                var lng = parseFloat(reporte.longitud)
+                latLng = new google.maps.LatLng({lat: lat, lng: lng});
+                map.panTo(latLng);
+                console.log(reporte);
+            },300);
+
+
+            $timeout(function(){
+                $('#map').animate({
+                    height: "100%"
+                });
+                $('#div-info-reporte').animate({
+                    height: "0%"
+                });
+            },20000);
         };
 
 
