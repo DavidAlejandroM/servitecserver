@@ -21,6 +21,7 @@ class ReportesRest extends CI_Controller {
 		$this->load->model('db_model');
         $observaciones = urldecode($observaciones);
         $idVisibolidad = urldecode($idVisibolidad);
+		$accionTomar = urldecode($accionTomar);
 		$fecha = urldecode($fecha);
 		print_r($fecha);
 		$dateInfo = DateTime::createFromFormat('Y-m-j H:i:s', $fecha);
