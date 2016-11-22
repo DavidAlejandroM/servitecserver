@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <ul class="right hide-on-med-and-down">
                 <li><a href=""><i class="material-icons" ng-click="clickBuscar()">search</i></a></li>
                 <li><a href=""><i class="material-icons" ng-click="clickMostrarTodo()">view_module</i></a></li>
-                <li><a href=""><i class="material-icons">refresh</i></a></li>
+                <li><a href=""><i class="material-icons" ng-click="">list</i></a></li>
                 <li><a href=""><i class="material-icons">more_vert</i></a></li>
             </ul>
         </div>
@@ -64,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li class="collection-item">Anclaje: {{reporteSeleccionado.anclaje}}</li>
                         <li class="collection-item">Visibilidad: {{reporteSeleccionado.visibilidad}}</li>
                         <li class="collection-item">Accion a tomar: {{reporteSeleccionado.accionTomar}}</li>
-                        <li class="collection-item">Observacioens: {{reporteSeleccionado.observaciones}}</li>
+                        <li class="collection-item">Observaciones: {{reporteSeleccionado.observaciones}}</li>
                     </ul>
                     </p>
                 </div>

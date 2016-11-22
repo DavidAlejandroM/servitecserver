@@ -1,15 +1,14 @@
 /**
  * Created by DEIRY on 8/11/2016.
  */
-$(document).ready(function(){
+$(document).ready(function () {
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
 });
 
 
 angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloService'])
-    .controller('MapCtrl', function ($scope, $timeout, $http, reporteSenalService, $interval)
-    {
+    .controller('MapCtrl', function ($scope, $timeout, $http, reporteSenalService, $interval) {
 
         var servidor = 'http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerReportesPlataforma';
         $scope.reportes = null;
@@ -21,11 +20,11 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
         var nav_size = null;
         var window_size = null;
 
-            angular.element(document).ready(function () {
+        angular.element(document).ready(function () {
             $scope.getReportes();
             $('.modal').modal();
             nav_size = $('nav').height();
-             window_size = $(window).height();
+            window_size = $(window).height();
             $('#map-container').height(window_size - nav_size - 25);
             $('#itemReporte').height(window_size - nav_size - 25);
             $('#contentSeleccionado').hide();
@@ -62,18 +61,17 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
             }, 20000);
         };
 
-        $scope.clickReporte = function(reporte)
-        {
+        $scope.clickReporte = function (reporte) {
             //$('#modal1').modal('open');
             //$('#map').height(window_size - nav_size - 200);
             $('#map').animate({
                 height: "50%"
-            },200);
+            }, 200);
             $('#div-info-reporte').animate({
                 height: "50%"
-            },200);
+            }, 200);
 
-            $timeout(function(){
+            $timeout(function () {
                 $scope.eliminarMarcadores(null);
                 $scope.reporteSeleccionado = reporte;
                 $scope.crearMarcador(reporte);
@@ -82,18 +80,23 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
                 latLng = new google.maps.LatLng({lat: lat, lng: lng});
                 map.panTo(latLng);
                 console.log(reporte);
-            },300);
+            }, 300);
 
 
-            $timeout(function(){
+            $timeout(function () {
                 $('#map').animate({
                     height: "100%"
                 });
                 $('#div-info-reporte').animate({
                     height: "0%"
                 });
-            },20000);
+            }, 20000);
         };
+
+        $scope.mostrarReportes = function(){
+
+            
+        }
 
 
         $scope.getReportes = function () {
@@ -111,16 +114,14 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
         /****
          * funciones para los marcadores
          */
-        $scope.crearMarcadores = function(reportes){
+        $scope.crearMarcadores = function (reportes) {
             marcadores = [];
-            for(var i = 0; i< reportes.length;i++)
-            {
+            for (var i = 0; i < reportes.length; i++) {
                 $scope.crearMarcador(reportes[i]);
             }
         };
 
-        $scope.crearMarcador= function(reporte)
-        {
+        $scope.crearMarcador = function (reporte) {
             var lat = parseFloat(reporte.latitud);
             var lng = parseFloat(reporte.longitud);
             var latlon = new google.maps.LatLng({lat: lat, lng: lng});
@@ -128,22 +129,42 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
                 draggable: false,
                 position: latlon,
                 map: map,
-                title: reporte.id_reporte});
-                marcadores.push(marcador);
+                title: reporte.id_reporte
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+                content: $scope.templatePop(reporte)
+            });
+
+            marcador.addListener('click', function() {
+                infowindow.open(map, marcador);
+            });
+            marcadores.push(marcador);
         };
 
-        $scope.eliminarMarcadores = function(map){
-            for (var i = 0; i < marcadores.length;i++)
-            {
+        $scope.templatePop = function (reporte) {
+            var contentString =
+                ' <div id="div-info-reporte" style="width: 100%; height: 0%; overflow-y: auto">' +
+                '<div><img src="img/senales/'+reporte.icono+ '"style="height: 150px; margin-top: 20%;margin-left: 20px;"></div>' +
+                '<h7><b>'+reporte.nombre+'</b></h4>' +
+                '<br><h8>'+reporte.nombre_categoria+'</h5>' +
+                '<br><h8>'+reporte.fecha+'</h8>' +
+
+                '</div>';
+            return contentString;
+        }
+
+        $scope.eliminarMarcadores = function (map) {
+            for (var i = 0; i < marcadores.length; i++) {
                 marcadores[i].setMap(map);
             }
         };
 
-        $scope.clickBuscar = function(){
-          $('#div-buscar').slideToggle(200);
+        $scope.clickBuscar = function () {
+            $('#div-buscar').slideToggle(200);
         };
 
-        $scope.clickMostrarTodo = function(){
+        $scope.clickMostrarTodo = function () {
             $scope.eliminarMarcadores(map);
         }
 
