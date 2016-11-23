@@ -66,15 +66,22 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
             //$('#modal1').modal('open');
             //$('#map').height(window_size - nav_size - 200);
 
-           /* $('#div-info-reporte').animate({
-                width: "30%"
-            }, 200);
+           $('#div-info-reporte').animate({
+                width: "40%"
+            }, 500).show();
+            $('#map-container').animate({
+                width: "60%"
+            },500);
             $('#itemReporte').animate({
-                width: "0%"
-            }, 200);
-            $('#itemReporte').hide();*/
+                width: "0"
+            }, 500);
+            $timeout(function () {
+                $('#itemReporte').hide();
+
+            },500);
+          /*  $('#itemReporte').hide();
             $('#div-info-reporte').show();
-            $('#itemReporte').hide();
+            $('#itemReporte').hide();*/
 
             $timeout(function () {
                 $scope.eliminarMarcadores(null);
@@ -88,12 +95,17 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
             }, 300);
 
 
-         /*   $timeout(function () {
+           /* $timeout(function ()
+            {
                 $('#div-info-reporte').animate({
                     width: "0%"
                 });
-            }, 20000);
-            $('#itemReporte').show();*/
+                $('#itemReporte').animate({
+                    width:"30%"
+                })
+            }, 20000);*/
+
+           /* $('#itemReporte').show();*/
 
         };
 
