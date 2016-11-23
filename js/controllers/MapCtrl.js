@@ -110,8 +110,19 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
         };
 
         $scope.mostrarReportes = function () {
-            $('#div-info-reporte').hide();
-            $('#itemReporte').show();
+            $('#div-info-reporte').animate({
+                width: "0%"
+            }, 500).hide();
+            $('#map-container').animate({
+                width: "60%"
+            },500);
+            $('#itemReporte').animate({
+                width: "40%"
+            }, 500);
+            $timeout(function () {
+                $('#itemReporte').show();
+
+            },500);
         }
 
 
