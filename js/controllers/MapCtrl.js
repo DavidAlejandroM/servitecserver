@@ -27,7 +27,8 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
             window_size = $(window).height();
             $('#map-container').height(window_size - nav_size - 25);
             $('#itemReporte').height(window_size - nav_size - 25);
-            $('#contentSeleccionado').hide();
+            $('#div-info-reporte').hide();
+            $('#itemReporte').show();
 
 
             latLng = new google.maps.LatLng({lat: $scope.lat, lng: $scope.lng});
@@ -64,12 +65,16 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
         $scope.clickReporte = function (reporte) {
             //$('#modal1').modal('open');
             //$('#map').height(window_size - nav_size - 200);
-            $('#map').animate({
-                height: "50%"
+
+           /* $('#div-info-reporte').animate({
+                width: "30%"
             }, 200);
-            $('#div-info-reporte').animate({
-                height: "50%"
+            $('#itemReporte').animate({
+                width: "0%"
             }, 200);
+            $('#itemReporte').hide();*/
+            $('#div-info-reporte').show();
+            $('#itemReporte').hide();
 
             $timeout(function () {
                 $scope.eliminarMarcadores(null);
@@ -83,19 +88,18 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
             }, 300);
 
 
-            $timeout(function () {
-                $('#map').animate({
-                    height: "100%"
-                });
+         /*   $timeout(function () {
                 $('#div-info-reporte').animate({
-                    height: "0%"
+                    width: "0%"
                 });
             }, 20000);
+            $('#itemReporte').show();*/
+
         };
 
-        $scope.mostrarReportes = function(){
-
-            
+        $scope.mostrarReportes = function () {
+            $('#div-info-reporte').hide();
+            $('#itemReporte').show();
         }
 
 
@@ -136,7 +140,7 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
                 content: $scope.templatePop(reporte)
             });
 
-            marcador.addListener('click', function() {
+            marcador.addListener('click', function () {
                 infowindow.open(map, marcador);
             });
             marcadores.push(marcador);
@@ -145,10 +149,10 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
         $scope.templatePop = function (reporte) {
             var contentString =
                 ' <div id="div-info-reporte" style="width: 100%; height: 0%; overflow-y: auto">' +
-                '<div><img src="img/senales/'+reporte.icono+ '"style="height: 150px; margin-top: 20%;margin-left: 20px;"></div>' +
-                '<h7><b>'+reporte.nombre+'</b></h4>' +
-                '<br><h8>'+reporte.nombre_categoria+'</h5>' +
-                '<br><h8>'+reporte.fecha+'</h8>' +
+                '<div><img src="img/senales/' + reporte.icono + '"style="height: 150px; margin-top: 20%;margin-left: 20px;"></div>' +
+                '<h7><b>' + reporte.nombre + '</b></h4>' +
+                '<br><h8>' + reporte.nombre_categoria + '</h5>' +
+                '<br><h8>' + reporte.fecha + '</h8>' +
 
                 '</div>';
             return contentString;

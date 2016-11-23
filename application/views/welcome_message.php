@@ -38,25 +38,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </nav>
     <div class="row">
+        <div>
+            <div class="col s4" id="div-info-reporte" style="width: 30%; height: 100%; overflow-x: auto; display:none">
+                <a class="btn-floating btn-large waves-effect waves-light fondoColor"
+                   style="margin-left: 90%; background: #3F51B5"><i class="material-icons" ng-click="mostrarReportes()">replay</i></a>
 
-        <div class="col s8" id="map-container">
-            <div class="z-depth-2" id="map" style="width: 100%; height: 100%">
-            </div>
-            <div id="div-info-reporte" style="width: 100%; height: 0%; overflow-y: auto">
-                <div class="col s2">
-                    <img src="img/senales/{{reporteSeleccionado.icono}}" style="height: 150px; margin-top: 20%;margin-left: 20px;">
+                <img src="img/senales/{{reporteSeleccionado.icono}}" align="center"
+                     style="height: 150px;margin-left: 20%">
+
+                <img src="img/senales/{{reporteSeleccionado.icono}}" align="right" style="height:70px;margin-top: 20%">
+
+                    <div style="margin-left: 5%">
                     <p>{{reporteSeleccionado.fecha}}</p>
-                </div>
-                <div class="col s10">
-                    <div class="row">
-                        <div class="col s10">
-                            <h4>{{reporteSeleccionado.nombre}}</h4>
-                            <h5>{{reporteSeleccionado.nombre_categoria}}</h5>
-                        </div>
-                        <div class="col s2">
-                            <img src="img/senales/{{reporteSeleccionado.icono}}" align="right"  style="height: 70px;">
-                        </div>
-                    </div>
+                    <h4>{{reporteSeleccionado.nombre}}</h4>
+                    <h5>{{reporteSeleccionado.nombre_categoria}}</h5>
+
                     <p>
                     <ul class="collection">
                         <li class="collection-item">Tablero: {{reporteSeleccionado.tablero}}</li>
@@ -67,14 +63,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li class="collection-item">Observaciones: {{reporteSeleccionado.observaciones}}</li>
                     </ul>
                     </p>
+
+
                 </div>
             </div>
+
+
         </div>
 
 
+        <div class="col s8" id="map-container">
 
-        <div class="col s4" id="itemReporte" style="overflow-y: auto">
-            <div class="z-position-2 colorApp" id="div-buscar" style="width: 100%;height: 100px;position: relative;display: none">
+            <div class="z-depth-2" id="map" style="width: 100%; height: 100%">
+            </div>
+
+        </div>
+
+
+        <div class="col s4" id="itemReporte" style="overflow-y: auto; display: block">
+            <div class="z-position-2 colorApp" id="div-buscar"
+                 style="width: 100%;height: 100px;position: relative;display: none">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">account_circle</i>
                     <input id="icon_prefix" type="text" class="validate" ng-model="buscar">
@@ -92,8 +100,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>Nombre</th>
                     </tr>
                     </thead>
-                  <tbody>
-                  <tr class="tabla-reportes-row" ng-repeat="r in reportes | filter: buscar" ng-click="clickReporte(r)">
+                    <tbody>
+                    <tr class="tabla-reportes-row" ng-repeat="r in reportes | filter: buscar"
+                        ng-click="clickReporte(r)">
                         <td data-title="Icono"><img src="img/senales/{{r.icono}}" style="height: 70px;"></td>
                         <td data-title="ID">{{r.id_senal}}</td>
                         <td data-title="Fecha">{{r.fecha}}</td>
@@ -101,48 +110,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td data-title="Nombre">{{r.nombre}}</td>
                     </tr>
 
-                   </tbody>
+                    </tbody>
                 </table>
             </div>
         </div>
 
-<!--        <!-- Modal Structure -->
-<!--        <div id="modal1" class="modal bottom-sheet">-->
-<!--            <div class="modal-content">-->
-<!--                <div class="col s2">-->
-<!--                    <img src="img/senales/{{reporteSeleccionado.icono}}" style="height: 150px; margin-top: 20%;margin-left: 20px;">-->
-<!--                    <p>{{reporteSeleccionado.fecha}}</p>-->
-<!--                </div>-->
-<!--                <div class="col s10">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col s10">-->
-<!--                            <h4>{{reporteSeleccionado.nombre}}</h4>-->
-<!--                            <h5>{{reporteSeleccionado.nombre_categoria}}</h5>-->
-<!--                        </div>-->
-<!--                        <div class="col s2">-->
-<!--                            <img src="img/senales/{{reporteSeleccionado.icono}}" align="right"  style="height: 70px;">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <p>-->
-<!--                    <ul class="collection">-->
-<!--                        <li class="collection-item">Tablero: {{reporteSeleccionado.tablero}}</li>-->
-<!--                        <li class="collection-item">Pedestal: {{reporteSeleccionado.pedestal}}</li>-->
-<!--                        <li class="collection-item">Anclaje: {{reporteSeleccionado.anclaje}}</li>-->
-<!--                        <li class="collection-item">Visibilidad: {{reporteSeleccionado.visibilidad}}</li>-->
-<!--                        <li class="collection-item">Accion a tomar: {{reporteSeleccionado.accionTomar}}</li>-->
-<!--                        <li class="collection-item">Observacioens: {{reporteSeleccionado.observaciones}}</li>-->
-<!--                    </ul>-->
-<!--                    </p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="modal-footer">-->
-<!--                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Aceptar</a>-->
-<!--            </div>-->
-<!--        </div>-->
-    </div>
-    <div class="row">
-        <div class="col s8" id="contentSeleccionado">
-        </div>
+        <!--        <!-- Modal Structure -->
+        <!--        <div id="modal1" class="modal bottom-sheet">-->
+        <!--            <div class="modal-content">-->
+        <!--                <div class="col s2">-->
+        <!--                    <img src="img/senales/{{reporteSeleccionado.icono}}" style="height: 150px; margin-top: 20%;margin-left: 20px;">-->
+        <!--                    <p>{{reporteSeleccionado.fecha}}</p>-->
+        <!--                </div>-->
+        <!--                <div class="col s10">-->
+        <!--                    <div class="row">-->
+        <!--                        <div class="col s10">-->
+        <!--                            <h4>{{reporteSeleccionado.nombre}}</h4>-->
+        <!--                            <h5>{{reporteSeleccionado.nombre_categoria}}</h5>-->
+        <!--                        </div>-->
+        <!--                        <div class="col s2">-->
+        <!--                            <img src="img/senales/{{reporteSeleccionado.icono}}" align="right"  style="height: 70px;">-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <p>-->
+        <!--                    <ul class="collection">-->
+        <!--                        <li class="collection-item">Tablero: {{reporteSeleccionado.tablero}}</li>-->
+        <!--                        <li class="collection-item">Pedestal: {{reporteSeleccionado.pedestal}}</li>-->
+        <!--                        <li class="collection-item">Anclaje: {{reporteSeleccionado.anclaje}}</li>-->
+        <!--                        <li class="collection-item">Visibilidad: {{reporteSeleccionado.visibilidad}}</li>-->
+        <!--                        <li class="collection-item">Accion a tomar: {{reporteSeleccionado.accionTomar}}</li>-->
+        <!--                        <li class="collection-item">Observacioens: {{reporteSeleccionado.observaciones}}</li>-->
+        <!--                    </ul>-->
+        <!--                    </p>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="modal-footer">-->
+        <!--                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Aceptar</a>-->
+        <!--            </div>-->
+        <!--        </div>-->
     </div>
 
 
