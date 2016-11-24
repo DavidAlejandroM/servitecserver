@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div ng-controller="MapCtrl" style="overflow-y: hidden">
     <nav>
         <div class="nav-wrapper colorApp">
-            <a href="#!" class="brand-logo"><i class="material-icons">directions_car</i>Servitec</a>
+            <a href="#!" class="brand-logo"><i class="material-icons">directions_car</i>SignalStreet</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href=""><i class="material-icons" ng-click="clickBuscar()">search</i></a></li>
                 <li><a href=""><i class="material-icons" ng-click="clickMostrarTodo()">view_module</i></a></li>
@@ -153,7 +153,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv7SeCNl6N6dYQLcmieAhenQ3WZ37XevU&callback">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMw2P0uTQGwmDNOYOrySp1XAi001ivUrI&callback">
 </script>
 </body>
 </html>
