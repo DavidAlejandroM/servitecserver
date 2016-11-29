@@ -10,7 +10,7 @@ $(document).ready(function () {
 angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloService'])
     .controller('MapCtrl', function ($scope, $timeout, $http, reporteSenalService, $interval) {
 
-        var servidor = 'http://signalstreet.net/index.php/ReportesRest/obtenerReportesPlataforma';
+        var servidor = 'http://signalstreet.net';
         $scope.reportes = null;
 
 
@@ -127,7 +127,7 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
 
 
         $scope.getReportes = function () {
-            $http.get(servidor)
+            $http.get(servidor+'/index.php/ReportesRest/obtenerReportesPlataforma')
                 .success(function (data) {
                     $scope.reportes = data;
                     reporteSenalService.setReportes(data);
