@@ -21,6 +21,7 @@ class ReportesRest extends CI_Controller {
 		$this->load->model('db_model');
         $observaciones = urldecode($observaciones);
         $idVisibolidad = urldecode($idVisibolidad);
+		$accionTomar = urldecode($accionTomar);
 		$fecha = urldecode($fecha);
 		print_r($fecha);
 		$dateInfo = DateTime::createFromFormat('Y-m-j H:i:s', $fecha);
@@ -44,10 +45,31 @@ class ReportesRest extends CI_Controller {
 		echo json_encode($senales);
 	}
 
+	public function obtenerSenal($id)
+	{
+		$this->load->model('db_model');
+		$senales = $this->db_model->obtenerSenal($id);
+		echo json_encode($senales);
+	}
+
 	public function obtenerCategorias(){
 		$this->load->model('db_model');
 		$categorias = $this->db_model->obtenerCategorias();
 		echo json_encode($categorias);
+	}
+
+
+    public function obtenerCategoria($idCat){
+        $this->load->model('db_model');
+        $categoria = $this->db_model->obtenerCategoria($idCat);
+        echo json_encode($categoria);
+    }
+
+	public function obtenerReportesPlataforma()
+	{
+		$this->load->model('db_model');
+		$reportes = $this->db_model->obtenerReportesPlataforma();
+		echo json_encode($reportes);
 	}
 
 

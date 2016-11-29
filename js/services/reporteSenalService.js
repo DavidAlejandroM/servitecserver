@@ -16,80 +16,6 @@ angular.module('reporteSenalService', [])
       observaciones: null
     };
 
-    var senalesReglamentaria = [
-      {
-        id: 1,
-        nombre: "Pare",
-        img: "img/senales/sr-01.png",
-        categoria: 1
-      },
-      {
-        id: 2,
-        nombre: "Ceda el paso",
-        img: "img/senales/sr-02.png",
-        categoria: 1
-      },
-      {
-        id: 3,
-        nombre: "Siga de frente",
-        img: "img/senales/sr-03.png",
-        categoria: 1
-      },
-      {
-        id: 4,
-        nombre: "No pase",
-        img: "img/senales/sr-04.png",
-        categoria: 1
-      },
-      {
-        id: 5,
-        nombre: "05: Giro a la izq. solamente",
-        img: "img/senales/sr-05.png",
-        categoria: 1
-      },
-      {
-        id: 6,
-        nombre: "Prohibido girar a la izq.",
-        img: "img/senales/sr-06.png",
-        categoria: 1
-      },
-      {
-        id: 1,
-        nombre: "Pare",
-        img: "img/senales/sr-01.png",
-        categoria: 1
-      },
-      {
-        id: 2,
-        nombre: "Ceda el paso",
-        img: "img/senales/sr-02.png",
-        categoria: 1
-      },
-      {
-        id: 3,
-        nombre: "Siga de frente",
-        img: "img/senales/sr-03.png",
-        categoria: 1
-      },
-      {
-        id: 4,
-        nombre: "No pase",
-        img: "img/senales/sr-04.png",
-        categoria: 1
-      },
-      {
-        id: 5,
-        nombre: "05: Giro a la izq. solamente",
-        img: "img/senales/sr-05.png",
-        categoria: 1
-      },
-      {
-        id: 6,
-        nombre: "Prohibido girar a la izq.",
-        img: "img/senales/sr-06.png",
-        categoria: 1
-      }
-    ]
 
     this.getReporte = function()
     {
@@ -172,20 +98,7 @@ angular.module('reporteSenalService', [])
       return reporte.observaciones;
     };
     // ($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto)
-    this.httpReporte = function($http)
-    {
 
-      var strReporte = reporte.idSenal+'/'+reporte.latitud+'/'+reporte.longitud+'/'+reporte.tablero+'/'+reporte.pedestal+'/'+reporte.anclaje+'/'+
-          reporte.visibilidad+'/'+reporte.foto+'/'+reporte.observaciones;
-
-      $http.post('http://192.168.1.100:8000/servitecserver/index.php/ReportesRest/insertarReporte/'+strReporte)
-          .success(function(data,status,headers,config){
-            console.log(data);
-          })
-          .error(function(error,status,headers,config){
-            console.log(error);
-          });
-    };
 
     this.agregarReporte= function(){
       reportes.push(reporte);
@@ -195,18 +108,7 @@ angular.module('reporteSenalService', [])
     this.setReportes = function(rep){
 
       reportes = rep;
-      console.log(reportes);
+
     };
-
-    this.buscarSeñal = function(id){
-      for(var i = 0; i< senalesReglamentaria.length;i++){
-
-        if(i == id)
-        {
-          return senalesReglamentaria[i];
-        }
-      }
-    };
-
   }
   ]);

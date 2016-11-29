@@ -1,5 +1,9 @@
 .colorApp{
     background-color: #3F51B5;
+
+}
+.fondoColor{
+    background: #3F51B5;
 }
 
 #map{
@@ -8,6 +12,10 @@
     margin-right: 0px !important;
     margin-top: 2px !important;
     padding: 0px !important;
+}
+#map-container
+{
+
 }
 /*ITEM PARA LA LISTA LATERAL DE REPORTES*/
 .item-reporte{
@@ -20,4 +28,49 @@
 .item-reporte:hover{
     background-color: #3F51B5 ;
     color: white;
+}
+
+.tabla-reportes-row:hover
+{
+    background-color: #90CAF9;
+}
+
+.tabla-reportes-row:active
+{
+    background-color: #9F9F9F;
+}
+
+.z-position-3
+{
+    position: absolute;
+    z-index: 3;
+}
+
+.z-position-2
+{
+    position: relative;
+    z-index: 2;
+}
+
+.z-position-1
+{
+    position: relative;
+    z-index: 1;
+}
+
+/*cambiando color de los input materialize*/
+
+.input-field input:focus + label {
+    color: white !important;
+}
+/* label underline focus color */
+.row .input-field input:focus {
+    border-bottom: 1px solid white !important;
+    box-shadow: 0 1px 0 0 white !important;
+    color: white !important;
+}
+
+.material-icons
+{
+    color: white !important;
 }
