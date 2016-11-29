@@ -153,7 +153,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMw2P0uTQGwmDNOYOrySp1XAi001ivUrI&callback">
+
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkTwuScwnw23tXOhKHqLGig9jWTqWRhiQ&callback">
+
 </script>
 </body>
 </html>
