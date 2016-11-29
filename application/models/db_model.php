@@ -1,5 +1,7 @@
-<?php
-class db_model extends CI_Model
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+
+class Db_model extends CI_Model
 {
     public function obtenerTodoEstados(){
         $q = $this->db->get('tbl_estados');
