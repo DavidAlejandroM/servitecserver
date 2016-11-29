@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div ng-controller="MapCtrl" style="overflow-y: hidden">
     <nav>
         <div class="nav-wrapper colorApp">
-            <a href="#!" class="brand-logo"><i class="material-icons">directions_car</i>Servitec</a>
+            <a href="#!" class="brand-logo"><i class="material-icons">directions_car</i>SignalStreet</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href=""><i class="material-icons" ng-click="clickBuscar()">search</i></a></li>
                 <li><a href=""><i class="material-icons" ng-click="clickMostrarTodo()">view_module</i></a></li>
@@ -38,8 +38,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </nav>
     <div class="row">
-        <div>
-            <div class="col s4" id="div-info-reporte" style="width: 30%; height: 100%; overflow-x: auto; display:none">
+
+            <div class="col" id="div-info-reporte" style="width: 40%;height: 100%; overflow-x: auto; display:none">
                 <a class="btn-floating btn-large waves-effect waves-light fondoColor"
                    style="margin-left: 90%; background: #3F51B5"><i class="material-icons" ng-click="mostrarReportes()">replay</i></a>
 
@@ -69,10 +69,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
 
 
-        </div>
 
 
-        <div class="col s8" id="map-container">
+        <div class="col" id="map-container" style="width: 60%;">
 
             <div class="z-depth-2" id="map" style="width: 100%; height: 100%">
             </div>
@@ -80,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
 
 
-        <div class="col s4" id="itemReporte" style="overflow-y: auto; display: block">
+        <div class="col" id="itemReporte" style="width:40%;overflow-y: auto; ">
             <div class="z-position-2 colorApp" id="div-buscar"
                  style="width: 100%;height: 100px;position: relative;display: none">
                 <div class="input-field col s12">
@@ -154,7 +153,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv7SeCNl6N6dYQLcmieAhenQ3WZ37XevU&callback">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMw2P0uTQGwmDNOYOrySp1XAi001ivUrI&callback">
 </script>
 </body>
 </html>
