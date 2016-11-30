@@ -39,36 +39,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </nav>
     <div class="row">
 
-            <div class="col" id="div-info-reporte" style="width: 40%;height: 100%; overflow-x: auto; display:none">
-                <a class="btn-floating btn-large waves-effect waves-light fondoColor"
-                   style="margin-left: 90%; background: #3F51B5"><i class="material-icons" ng-click="mostrarReportes()">replay</i></a>
+        <div class="col" id="div-info-reporte" style="width: 40%;height: 100%; overflow-x: auto; display:none">
+            <a class="btn-floating btn-large waves-effect waves-light fondoColor"
+               style="margin-left: 90%; background: #3F51B5"><i class="material-icons" ng-click="mostrarReportes()">replay</i></a>
 
-                <img src="img/senales/{{reporteSeleccionado.icono}}" align="center"
-                     style="height: 150px;margin-left: 20%">
+            <div>
+                <img src="img/senales/{{reporteSeleccionado.icono}}"
+                     style="height: 150px;margin-left: 40%">
 
-                <img src="img/senales/{{reporteSeleccionado.icono}}" align="right" style="height:70px;margin-top: 20%">
-
-                    <div style="margin-left: 5%">
-                    <p>{{reporteSeleccionado.fecha}}</p>
-                    <h4>{{reporteSeleccionado.nombre}}</h4>
-                    <h5>{{reporteSeleccionado.nombre_categoria}}</h5>
-
-                    <p>
-                    <ul class="collection">
-                        <li class="collection-item">Tablero: {{reporteSeleccionado.tablero}}</li>
-                        <li class="collection-item">Pedestal: {{reporteSeleccionado.pedestal}}</li>
-                        <li class="collection-item">Anclaje: {{reporteSeleccionado.anclaje}}</li>
-                        <li class="collection-item">Visibilidad: {{reporteSeleccionado.visibilidad}}</li>
-                        <li class="collection-item">Accion a tomar: {{reporteSeleccionado.accionTomar}}</li>
-                        <li class="collection-item">Observaciones: {{reporteSeleccionado.observaciones}}</li>
-                    </ul>
-                    </p>
-
-
-                </div>
             </div>
 
 
+            <div class="row" style="margin-left: 5%">
+                <img src="img/senales/{{reporteSeleccionado.icono}}" align="right" style="height:70px">
+                <h4>{{reporteSeleccionado.nombre}}</h4>
+                <h5>{{reporteSeleccionado.nombre_categoria}}</h5>
+
+
+                <ul class="collection col s6">
+                    <li class="collection-item">Tablero: {{reporteSeleccionado.fecha}}</li>
+                    <li class="collection-item">Tablero: {{reporteSeleccionado.tablero}}</li>
+                    <li class="collection-item">Pedestal: {{reporteSeleccionado.pedestal}}</li>
+                </ul>
+                <ul class="collection col s6">
+                    <li class="collection-item">Anclaje: {{reporteSeleccionado.anclaje}}</li>
+                    <li class="collection-item">Visibilidad: {{reporteSeleccionado.visibilidad}}</li>
+                    <li class="collection-item">Accion a tomar: {{reporteSeleccionado.accionTomar}}</li>
+                </ul>
+
+              <p>Observaciones:{{reporteSeleccionado.observaciones}}</p>
+
+
+
+
+            </div>
+        </div>
 
 
         <div class="col" id="map-container" style="width: 60%;">

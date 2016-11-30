@@ -4,6 +4,8 @@
 $(document).ready(function () {
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
+
+
 });
 
 
@@ -86,6 +88,7 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
             $timeout(function () {
                 $scope.eliminarMarcadores(null);
                 $scope.reporteSeleccionado = reporte;
+
                 $scope.crearMarcador(reporte);
                 var lat = parseFloat(reporte.latitud);
                 var lng = parseFloat(reporte.longitud)
