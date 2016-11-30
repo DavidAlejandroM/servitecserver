@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a class="btn-floating btn-large waves-effect waves-light fondoColor"
                    style="margin-left: 90%; background: #3F51B5"><i class="material-icons" ng-click="mostrarReportes()">replay</i></a>
 
-                <img src="img/senales/{{reporteSeleccionado.icono}}" align="center"
+                <img src="http://signalstreet.net/{{reporteSeleccionado.foto}}" align="center"
                      style="height: 150px;margin-left: 20%">
 
                 <img src="img/senales/{{reporteSeleccionado.icono}}" align="right" style="height:70px;margin-top: 20%">

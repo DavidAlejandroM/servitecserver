@@ -18,17 +18,20 @@ class ReportesRest extends CI_Controller {
 
 	public function insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones,$accionTomar,$idCategoria,$fecha)
 	{
-		$this->load->model('db_model');
-        $observaciones = urldecode($observaciones);
+
+		$foto = urldecode($foto);
+		$foto = str_replace(' ','/',$foto);
+		$observaciones = urldecode($observaciones);
         $idVisibolidad = urldecode($idVisibolidad);
 		$accionTomar = urldecode($accionTomar);
 		$fecha = urldecode($fecha);
-		print_r($fecha);
+		//print_r($fecha);
 		$dateInfo = DateTime::createFromFormat('Y-m-j H:i:s', $fecha);
 		$fechaNueva = $dateInfo->format('Y-m-d h:i:s');
-		print_r($fechaNueva);
-
-        $this->db_model->insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones,$accionTomar,$idCategoria, $fecha);
+		//print_r($fechaNueva);
+		$this->load->model('db_model');
+		$resutl = $this->db_model->insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones,$accionTomar,$idCategoria, $fecha);
+		print_r($resutl);
 	}
 
 	public function obtenerReportes()
