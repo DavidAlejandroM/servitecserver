@@ -60,11 +60,13 @@
 
 /*cambiando color de los input materialize*/
 
-.input-field input:focus + label {
+.input-field input:focus + label
+{
     color: white !important;
 }
 /* label underline focus color */
-.row .input-field input:focus {
+.row .input-field input:focus
+{
     border-bottom: 1px solid white !important;
     box-shadow: 0 1px 0 0 white !important;
     color: white !important;
@@ -74,3 +76,14 @@
 {
     color: white !important;
 }
+
+.col-mod
+{
+    padding: 0px !important;
+}
+
+#div-atras:hover
+{
+    background: #6a5acd;
+}
+

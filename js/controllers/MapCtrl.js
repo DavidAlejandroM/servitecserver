@@ -4,6 +4,8 @@
 $(document).ready(function () {
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
+
+
 });
 
 
@@ -27,6 +29,7 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
             window_size = $(window).height();
             $('#map-container').height(window_size - nav_size - 25);
             $('#itemReporte').height(window_size - nav_size - 25);
+            $('#div-info-reporte').height(window_size -nav_size -25);
             $('#div-info-reporte').hide();
             $('#itemReporte').show();
 
@@ -63,29 +66,34 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
         };
 
         $scope.clickReporte = function (reporte) {
-            //$('#modal1').modal('open');
-            //$('#map').height(window_size - nav_size - 200);
 
-           $('#div-info-reporte').animate({
-                width: "40%"
-            }, 500).show();
-            $('#map-container').animate({
-                width: "60%"
-            },500);
             $('#itemReporte').animate({
-                width: "0"
+                width: "0%"
+            }, 500);
+
+            $('#div-info-reporte').show().animate({
+                width: "40%"
             }, 500);
             $timeout(function () {
                 $('#itemReporte').hide();
-
             },500);
-          /*  $('#itemReporte').hide();
-            $('#div-info-reporte').show();
-            $('#itemReporte').hide();*/
+
+/*
+            $('#itemReporte').animate({
+                width: "0"
+            }, 500);
+           $('#div-info-reporte').show().animate({
+                width: "40%"
+            }, 500);
+
+            $timeout(function () {
+                $('#itemReporte').hide();
+            },500);*/
 
             $timeout(function () {
                 $scope.eliminarMarcadores(null);
                 $scope.reporteSeleccionado = reporte;
+
                 $scope.crearMarcador(reporte);
                 var lat = parseFloat(reporte.latitud);
                 var lng = parseFloat(reporte.longitud)
@@ -109,21 +117,19 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
 
         };
 
-        $scope.mostrarReportes = function () {
+        $scope.mostrarReportes = function ()
+        {
             $('#div-info-reporte').animate({
                 width: "0%"
-            }, 500).hide();
-            $('#map-container').animate({
-                width: "60%"
-            },500);
-            $('#itemReporte').animate({
+            }, 500);
+
+            $('#itemReporte').show().animate({
                 width: "40%"
             }, 500);
             $timeout(function () {
-                $('#itemReporte').show();
-
+                $('#div-info-reporte').hide();
             },500);
-        }
+        };
 
 
         $scope.getReportes = function () {
