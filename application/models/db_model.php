@@ -68,11 +68,7 @@ class Db_model extends CI_Model
     }
 
     public function obtenerCategorias(){
-        /*
-         id: 1,
-        name: "Señal Reglamentaria",
-        icon: "hola"
-       */
+
         $q = $q = $this->db->get('tbl_categoria');
         $categoria = $q->result();
         $arrayCategoria = array();
@@ -87,6 +83,7 @@ class Db_model extends CI_Model
         }
         return $arrayCategoria;
     }
+
     public function obtenerCategoria($id)
     {
         $this->db->where('id_categoria', $id);
@@ -133,6 +130,54 @@ class Db_model extends CI_Model
         return $arrayresult;
     }
 
+    public function obtenerEstados(){
+
+        $q = $q = $this->db->get('tbl_estado');
+        $estados = $q->result();
+        $arrayEstados = array();
+        foreach($estados as $est){
+            $a = array(
+                "id" => $est->est_idEstado,
+                "name" => $est->est_nombre
+            );
+            //print_r($a);
+            array_push($arrayEstados,$a);
+        }
+        return $arrayEstados;
+    }
+
+    public function obtenerVisiblidad(){
+
+        $q = $q = $this->db->get('tbl_visibilidad');
+        $visibilidad = $q->result();
+        $arrayVisi = array();
+        foreach($visibilidad as $opc){
+            $a = array(
+                "id" => $opc->vis_idVisibilidad,
+                "name" => $opc->vis_nombre
+            );
+            //print_r($a);
+            array_push($arrayVisi,$a);
+        }
+        return $arrayVisi;
+    }
+
+
+    public function obtenerAccion(){
+
+        $q = $q = $this->db->get('tbl_accion');
+        $accion = $q->result();
+        $arrayAccion = array();
+        foreach($accion as $opc){
+            $a = array(
+                "id" => $accion->acc_idAccion,
+                "name" => $accion->acc_nombre
+            );
+            //print_r($a);
+            array_push($arrayAccion,$a);
+        }
+        return $arrayAccion;
+    }
 
 
 

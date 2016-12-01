@@ -75,6 +75,25 @@ class ReportesRest extends CI_Controller {
 		echo json_encode($reportes);
 	}
 
+    public function obtenerEstados(){
+        $this->load->model('db_model');
+        $estados = $this->db_model->obtenerEstados();
+        echo json_encode($estados);
+    }
+
+    public function obtenerVisibilidad(){
+        $this->load->model('db_model');
+        $visilidad = $this->db_model->obtenerVisiblidad();
+        echo json_encode($visilidad);
+    }
+
+    public function obtenerAccion(){
+        $this->load->model('db_model');
+        $accion = $this->db_model->obtenerAccion();
+        echo json_encode($accion);
+    }
+
+
 
 	/*public function insertarReporte($reporte)
 	{
