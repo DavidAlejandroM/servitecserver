@@ -90,7 +90,7 @@ class ReportesRest extends CI_Controller {
     public function obtenerAccion(){
         $this->load->model('db_model');
         $accion = $this->db_model->obtenerAccion();
-        echo json_encode($accion);
+        echo json_encode($accion );
     }
 
 
