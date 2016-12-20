@@ -94,7 +94,7 @@ class Db_model extends CI_Model
 
     public function obtenerReportesPlataforma()
     {
-        $this->db->order_by('fecha','DESC');
+        /*$this->db->order_by('fecha','DESC');
         $q = $q = $this->db->get('tbl_reportes_senal');
         $result = $q->result();
 
@@ -127,12 +127,44 @@ class Db_model extends CI_Model
             array_push($arrayresult,$a);
         }
       // print_r($arrayresult);
-        return $arrayresult;
-    }
+        return $arrayresult;*/
+        $query = $this->db->query("SELECT
+    rep.rep_idReporte id_reporte,
+    rep.rep_senal id_senal,
+	sen.sen_nombre nombre,
+    sen.sen_icono icono,
+    cat.cat_idCategoria id_categoria,
+	cat.cat_nombre nombre_categoria,
+    rep.rep_foto foto,
+    rep.rep_latitud latitud,
+    rep.rep_longitud longitud,
+    rep.rep_fecha fecha,
+    est_3.est_nombre tablero,
+	est_1.est_nombre pedestal,
+	est_2.est_nombre anclaje,
+    vis.vis_nombre visibilidad,
+    rep.rep_observaciones observaciones,
+    acc.acc_nombre accionTomar
+FROM
+    tbl_reporte rep
+        INNER JOIN tbl_estado est_1 ON est_1.est_idEstado = rep.rep_pedestal
+        INNER JOIN tbl_estado est_2 ON est_2.est_idEstado = rep.rep_anclaje
+        INNER JOIN tbl_estado est_3 ON est_3.est_idEstado = rep.rep_tablero
+		INNER JOIN tbl_visibilidad vis ON vis.vis_idVisibilidad = rep.rep_visibilidad
+        INNER JOIN tbl_accion acc ON acc.acc_idAccion = rep.rep_accionTomar
+        INNER JOIN tbl_senal sen ON sen.sen_idSenal = rep.rep_senal
+        INNER JOIN tbl_categoria cat ON cat.cat_idCategoria = sen.sen_cat_idCategoria
+ORDER BY rep.rep_fecha DESC");
 
+        return $query->result();
+    }
+	/**
+	*Modificado 20/12/2016 Alejandro Marin
+	*cambie lo de php por solo el query
+	*/
     public function obtenerEstados(){
 
-        $q = $q = $this->db->get('tbl_estado');
+        /*$q = $q = $this->db->get('tbl_estado');
         $estados = $q->result();
         $arrayEstados = array();
         foreach($estados as $est){
@@ -142,43 +174,45 @@ class Db_model extends CI_Model
             );
             //print_r($a);
             array_push($arrayEstados,$a);
-        }
-        return $arrayEstados;
+        }*/
+	
+		$query = $this->db->query("SELECT 
+		est.est_idEstado id, 
+		est.est_nombre nombre 
+		FROM tbl_estado est");
+		
+		
+        return $query->result();
     }
 
+	/**
+	*Modificado 20/12/2016 Alejandro Marin
+	*cambie lo de php por solo el query
+	*/
     public function obtenerVisiblidad(){
-
-        $q = $q = $this->db->get('tbl_visibilidad');
-        $visibilidad = $q->result();
-        $arrayVisi = array();
-        foreach($visibilidad as $opc){
-            $a = array(
-                "id" => $opc->vis_idVisibilidad,
-                "name" => $opc->vis_nombre
-            );
-            //print_r($a);
-            array_push($arrayVisi,$a);
-        }
-        return $arrayVisi;
+		$query = $this->db->query("SELECT 
+		vis.vis_idVisibilidad id,
+		vis.vis_nombre nombre
+		FROM tbl_visibilidad vis");
+		
+		
+        return $query->result();
     }
 
-
-    public function obtenerAccion(){
-
-        $q = $q = $this->db->get('tbl_accion');
-        $accion = $q->result();
-        $arrayAccion = array();
-        foreach($accion as $opc){
-            $a = array(
-                "id" => $accion->acc_idAccion,
-                "name" => $accion->acc_nombre
-            );
-            //print_r($a);
-            array_push($arrayAccion,$a);
-        }
-        return $arrayAccion;
+	/**
+	*Modificado 20/12/2016 Alejandro Marin
+	*cambie lo de php por solo el query
+	*/
+    public function obtenerAccion()
+	{
+		$query = $this->db->query("SELECT 
+		acc.acc_idAccion id,
+        acc.acc_nombre nombre
+		FROM tbl_accion acc");
+		
+		
+        return $query->result();
     }
-
 
 
 }
