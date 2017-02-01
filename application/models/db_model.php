@@ -7,7 +7,7 @@ class Db_model extends CI_Model
         $q = $this->db->get('tbl_estados');
         return $q->result();
     }
-
+    
     public function insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones,$accionTomar,$fecha){
         $this->db->set('rep_senal', $idSenal);
         $this->db->set('rep_latitud', $lat);
@@ -65,23 +65,23 @@ class Db_model extends CI_Model
             array_push($arraySenal,$a);
         }
         return $arraySenal;*/
-
-        $query = $this->db->query("SELECT
-											sen.sen_idSenal id,
-											sen.sen_nombre nombre,
-											sen.sen_icono img,
-											sen.sen_cat_idCategoria categoria
-									FROM tbl_senal sen
+		
+		$query = $this->db->query("SELECT 
+											sen.sen_idSenal id, 
+											sen.sen_nombre nombre, 
+											sen.sen_icono img, 
+											sen.sen_cat_idCategoria categoria 
+									FROM tbl_senal sen 
 									WHERE sen.sen_cat_idCategoria = '".$id."'");
 
         return $query->result();
-
-
+		
+		
     }
 
     public function obtenerCategorias(){
 
-        $query = $this->db->query("SELECT
+       $query = $this->db->query("SELECT 
 										cat.cat_idCategoria id,
 										cat.cat_nombre nombre
 									FROM tbl_categoria cat");
@@ -163,10 +163,10 @@ ORDER BY rep.rep_fecha DESC");
 
         return $query->result();
     }
-    /**
-     *Modificado 20/12/2016 Alejandro Marin
-     *cambie lo de php por solo el query
-     */
+	/**
+	*Modificado 20/12/2016 Alejandro Marin
+	*cambie lo de php por solo el query
+	*/
     public function obtenerEstados(){
 
         /*$q = $q = $this->db->get('tbl_estado');
@@ -180,42 +180,42 @@ ORDER BY rep.rep_fecha DESC");
             //print_r($a);
             array_push($arrayEstados,$a);
         }*/
-
-        $query = $this->db->query("SELECT
-		est.est_idEstado id,
-		est.est_nombre nombre
+	
+		$query = $this->db->query("SELECT 
+		est.est_idEstado id, 
+		est.est_nombre nombre 
 		FROM tbl_estado est");
-
-
+		
+		
         return $query->result();
     }
 
-    /**
-     *Modificado 20/12/2016 Alejandro Marin
-     *cambie lo de php por solo el query
-     */
+	/**
+	*Modificado 20/12/2016 Alejandro Marin
+	*cambie lo de php por solo el query
+	*/
     public function obtenerVisiblidad(){
-        $query = $this->db->query("SELECT
+		$query = $this->db->query("SELECT 
 		vis.vis_idVisibilidad id,
 		vis.vis_nombre nombre
 		FROM tbl_visibilidad vis");
-
-
+		
+		
         return $query->result();
     }
 
-    /**
-     *Modificado 20/12/2016 Alejandro Marin
-     *cambie lo de php por solo el query
-     */
+	/**
+	*Modificado 20/12/2016 Alejandro Marin
+	*cambie lo de php por solo el query
+	*/
     public function obtenerAccion()
-    {
-        $query = $this->db->query("SELECT
+	{
+		$query = $this->db->query("SELECT 
 		acc.acc_idAccion id,
         acc.acc_nombre nombre
 		FROM tbl_accion acc");
-
-
+		
+		
         return $query->result();
     }
 

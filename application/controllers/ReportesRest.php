@@ -22,7 +22,7 @@ class ReportesRest extends CI_Controller {
 		$foto = urldecode($foto);
 		$foto = str_replace(' ','/',$foto);
 		$observaciones = urldecode($observaciones);
-		$idVisibolidad = urldecode($idVisibolidad);
+        $idVisibolidad = urldecode($idVisibolidad);
 		$accionTomar = urldecode($accionTomar);
 		$fecha = urldecode($fecha);
 		$foto = "img/reportes/".$foto;
@@ -63,11 +63,11 @@ class ReportesRest extends CI_Controller {
 	}
 
 
-	public function obtenerCategoria($idCat){
-		$this->load->model('db_model');
-		$categoria = $this->db_model->obtenerCategoria($idCat);
-		echo json_encode($categoria);
-	}
+    public function obtenerCategoria($idCat){
+        $this->load->model('db_model');
+        $categoria = $this->db_model->obtenerCategoria($idCat);
+        echo json_encode($categoria);
+    }
 
 	public function obtenerReportesPlataforma()
 	{
@@ -77,22 +77,22 @@ class ReportesRest extends CI_Controller {
 	}
 	/*Sofia*/
 	public function obtenerEstados(){
-		$this->load->model('db_model');
-		$estados = $this->db_model->obtenerEstados();
-		echo json_encode($estados);
-	}
+        $this->load->model('db_model');
+        $estados = $this->db_model->obtenerEstados();
+        echo json_encode($estados);
+    }
 	/*Sofia*/
-	public function obtenerVisibilidad(){
-		$this->load->model('db_model');
-		$visilidad = $this->db_model->obtenerVisiblidad();
-		echo json_encode($visilidad);
-	}
+    public function obtenerVisibilidad(){
+        $this->load->model('db_model');
+        $visilidad = $this->db_model->obtenerVisiblidad();
+        echo json_encode($visilidad);
+    }
 	/*Sofia*/
-	public function obtenerAccion(){
-		$this->load->model('db_model');
-		$accion = $this->db_model->obtenerAccion();
-		echo json_encode($accion);
-	}
+    public function obtenerAccion(){
+        $this->load->model('db_model');
+        $accion = $this->db_model->obtenerAccion();
+        echo json_encode($accion);
+    }
 
 
 	/*public function insertarReporte($reporte)
