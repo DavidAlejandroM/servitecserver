@@ -4,15 +4,13 @@
 $(document).ready(function () {
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
-
-
 });
 
 
 angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloService'])
     .controller('MapCtrl', function ($scope, $timeout, $http, reporteSenalService, $interval) {
 
-        var servidor = 'http://signalstreet.net';
+        var servidor = 'http://signalstreet.net/index.php/ReportesRest/obtenerReportesPlataforma';
         $scope.reportes = null;
 
 
@@ -93,7 +91,6 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
             $timeout(function () {
                 $scope.eliminarMarcadores(null);
                 $scope.reporteSeleccionado = reporte;
-
                 $scope.crearMarcador(reporte);
                 var lat = parseFloat(reporte.latitud);
                 var lng = parseFloat(reporte.longitud)
@@ -133,7 +130,7 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
 
 
         $scope.getReportes = function () {
-            $http.get(servidor+'/index.php/ReportesRest/obtenerReportesPlataforma')
+            $http.get(servidor)
                 .success(function (data) {
                     $scope.reportes = data;
                     reporteSenalService.setReportes(data);

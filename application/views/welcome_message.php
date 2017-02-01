@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div ng-controller="MapCtrl" style="overflow-y: hidden">
     <nav>
         <div class="nav-wrapper colorApp">
-            <a href="#!" class="brand-logo"><i class="material-icons">directions_car</i>SignalStreet</a>
+            <a href="" class="brand-logo"><i class="material-icons">directions_car</i>SignalStreet</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href=""><i class="material-icons" ng-click="clickBuscar()">search</i></a></li>
                 <li><a href=""><i class="material-icons" ng-click="clickMostrarTodo()">view_module</i></a></li>
@@ -39,44 +39,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </nav>
     <div class="row">
 
-        <div class="col" id="div-info-reporte" style="width: 40%;height: 100%; overflow-x: auto; display:none">
-            <a class="btn-floating btn-large waves-effect waves-light fondoColor"
-               style="margin-left: 90%; background: #3F51B5"><i class="material-icons" ng-click="mostrarReportes()">replay</i></a>
+        <div class="col col-mod" id="div-info-reporte" style="width: 40%;height: 100%; display:none; direction:rtl">
+            <div class="col col-mod scrollbar" style="height: 100% ;width: 90%; direction: ltr; overflow-x: auto;" >
+                <!--<a class="btn-floating btn-large waves-effect waves-light fondoColor"
+                   style="margin-left: 90%; background: #3F51B5"><i class="material-icons" ng-click="mostrarReportes()">replay</i></a>-->
 
-            <div>
-                <img src="img/senales/{{reporteSeleccionado.icono}}"
-                     style="height: 150px;margin-left: 40%">
+                <img src="http://signalstreet.net/{{reporteSeleccionado.foto}}" align="center"
+                     style="height: 150px;margin-left: 20%">
+
+                <img src="img/senales/{{reporteSeleccionado.icono}}" align="right" style="height:70px;margin-top: 20%">
+
+                <div style="margin-left: 5%">
+                    <p>{{reporteSeleccionado.fecha}}</p>
+                    <h4>{{reporteSeleccionado.nombre}}</h4>
+                    <h5>{{reporteSeleccionado.nombre_categoria}}</h5>
+
+                    <p>
+                    <ul class="collection">
+                        <li class="collection-item">Tablero: {{reporteSeleccionado.tablero}}</li>
+                        <li class="collection-item">Pedestal: {{reporteSeleccionado.pedestal}}</li>
+                        <li class="collection-item">Anclaje: {{reporteSeleccionado.anclaje}}</li>
+                        <li class="collection-item">Visibilidad: {{reporteSeleccionado.visibilidad}}</li>
+                        <li class="collection-item">Accion a tomar: {{reporteSeleccionado.accionTomar}}</li>
+                        <li class="collection-item">Observaciones: {{reporteSeleccionado.observaciones}}</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+            <div id="div-atras" class="colorApp col col-mod" style="width: 10%; height: 100%;" ng-click="mostrarReportes()">
 
             </div>
 
-
-            <div class="row" style="margin-left: 5%">
-                <img src="img/senales/{{reporteSeleccionado.icono}}" align="right" style="height:70px">
-                <h4>{{reporteSeleccionado.nombre}}</h4>
-                <h5>{{reporteSeleccionado.nombre_categoria}}</h5>
-
-
-                <ul class="collection col s6">
-                    <li class="collection-item">Tablero: {{reporteSeleccionado.fecha}}</li>
-                    <li class="collection-item">Tablero: {{reporteSeleccionado.tablero}}</li>
-                    <li class="collection-item">Pedestal: {{reporteSeleccionado.pedestal}}</li>
-                </ul>
-                <ul class="collection col s6">
-                    <li class="collection-item">Anclaje: {{reporteSeleccionado.anclaje}}</li>
-                    <li class="collection-item">Visibilidad: {{reporteSeleccionado.visibilidad}}</li>
-                    <li class="collection-item">Accion a tomar: {{reporteSeleccionado.accionTomar}}</li>
-                </ul>
-
-              <p>Observaciones:{{reporteSeleccionado.observaciones}}</p>
-
-
-
-
-            </div>
         </div>
 
 
-        <div class="col" id="map-container" style="width: 60%;">
+        <div class="col col-mod" id="map-container" style="width: 60%;">
 
             <div class="z-depth-2" id="map" style="width: 100%; height: 100%">
             </div>
@@ -84,7 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
 
 
-        <div class="col" id="itemReporte" style="width:40%;overflow-y: auto; ">
+        <div class="col " id="itemReporte" style="width:40%;overflow-y: auto; right: 0; ">
             <div class="z-position-2 colorApp" id="div-buscar"
                  style="width: 100%;height: 100px;position: relative;display: none">
                 <div class="input-field col s12">
