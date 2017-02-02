@@ -16,19 +16,23 @@ class ReportesRest extends CI_Controller {
 	}
 
 
-	public function insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones,$accionTomar,$idCategoria,$fecha)
+	public function insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones,$accionTomar,$fecha)
 	{
-		$this->load->model('db_model');
-        $observaciones = urldecode($observaciones);
+
+		$foto = urldecode($foto);
+		$foto = str_replace(' ','/',$foto);
+		$observaciones = urldecode($observaciones);
         $idVisibolidad = urldecode($idVisibolidad);
 		$accionTomar = urldecode($accionTomar);
 		$fecha = urldecode($fecha);
-		print_r($fecha);
+		$foto = "img/reportes/".$foto;
+		//print_r($fecha);
 		$dateInfo = DateTime::createFromFormat('Y-m-j H:i:s', $fecha);
 		$fechaNueva = $dateInfo->format('Y-m-d h:i:s');
-		print_r($fechaNueva);
-
-        $this->db_model->insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones,$accionTomar,$idCategoria, $fecha);
+		//print_r($fechaNueva);
+		$this->load->model('db_model');
+		$resutl = $this->db_model->insertarReporte($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto,$observaciones,$accionTomar,$fecha);
+		print_r($resutl);
 	}
 
 	public function obtenerReportes()
@@ -71,6 +75,24 @@ class ReportesRest extends CI_Controller {
 		$reportes = $this->db_model->obtenerReportesPlataforma();
 		echo json_encode($reportes);
 	}
+	/*Sofia*/
+	public function obtenerEstados(){
+        $this->load->model('db_model');
+        $estados = $this->db_model->obtenerEstados();
+        echo json_encode($estados);
+    }
+	/*Sofia*/
+    public function obtenerVisibilidad(){
+        $this->load->model('db_model');
+        $visilidad = $this->db_model->obtenerVisiblidad();
+        echo json_encode($visilidad);
+    }
+	/*Sofia*/
+    public function obtenerAccion(){
+        $this->load->model('db_model');
+        $accion = $this->db_model->obtenerAccion();
+        echo json_encode($accion);
+    }
 
 
 	/*public function insertarReporte($reporte)

@@ -66,6 +66,18 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
         $scope.clickReporte = function (reporte) {
 
             $('#itemReporte').animate({
+                width: "0%"
+            }, 500);
+
+            $('#div-info-reporte').show().animate({
+                width: "40%"
+            }, 500);
+            $timeout(function () {
+                $('#itemReporte').hide();
+            },500);
+
+/*
+            $('#itemReporte').animate({
                 width: "0"
             }, 500);
            $('#div-info-reporte').show().animate({
@@ -74,7 +86,7 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
 
             $timeout(function () {
                 $('#itemReporte').hide();
-            },500);
+            },500);*/
 
             $timeout(function () {
                 $scope.eliminarMarcadores(null);
@@ -106,13 +118,13 @@ angular.module('servitecWeb', ['reporteSenalService', 'configService', 'modeloSe
         {
             $('#div-info-reporte').animate({
                 width: "0%"
-            }, 500).hide();
+            }, 500);
 
-            $('#itemReporte').animate({
+            $('#itemReporte').show().animate({
                 width: "40%"
             }, 500);
             $timeout(function () {
-                $('#itemReporte').hide();
+                $('#div-info-reporte').hide();
             },500);
         };
 
