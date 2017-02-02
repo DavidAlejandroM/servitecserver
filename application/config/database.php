@@ -75,12 +75,12 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'mysql.hostinger.es',
+	'hostname' => 'localhost',
 	//'username' => 'u567840743_deiry',
-	'username' => 'u567840743_root',
-	'password' => 'DBsignalstreet64',
+	'username' => 'root',
+	'password' => '',
 	//'database' => 'u567840743_dbstr',
-	'database' => 'u567840743_ss',
+	'database' => 'dbsignalstreet',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
