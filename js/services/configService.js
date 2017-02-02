@@ -1,14 +1,15 @@
 angular.module('configService', [])
   .service('configService',[function ()
   {
-    var servidor = 'localhost:8080';
+      var servidor = '/servitecserver/index.php';
+      //var servidor = 'signalstreet.net/index.php';
 
     this.getServidorPuerto = function(){
       return servidor
     };
 
     this.getUrlServidor = function(){
-      return servidor + '/servitecserver/index.php';
+      return servidor;
     };
 
   }
