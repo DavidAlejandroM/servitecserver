@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
--- Host: localhost    Database: dbservitec
+-- Host: localhost    Database: dbsignalstreet
 -- ------------------------------------------------------
 -- Server version	5.7.11
 
@@ -16,28 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tbl_senal_reglamentaria`
+-- Table structure for table `tbl_visibilidad`
 --
 
-DROP TABLE IF EXISTS `tbl_senal_reglamentaria`;
+DROP TABLE IF EXISTS `tbl_visibilidad`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tbl_senal_reglamentaria` (
-  `id_senal` int(11) NOT NULL,
-  `nombre` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `icono` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `codigo` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
-  PRIMARY KEY (`id_senal`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+CREATE TABLE `tbl_visibilidad` (
+  `vis_idVisibilidad` int(11) NOT NULL AUTO_INCREMENT,
+  `vis_nombre` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`vis_idVisibilidad`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_senal_reglamentaria`
+-- Dumping data for table `tbl_visibilidad`
 --
 
-LOCK TABLES `tbl_senal_reglamentaria` WRITE;
-/*!40000 ALTER TABLE `tbl_senal_reglamentaria` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_senal_reglamentaria` ENABLE KEYS */;
+LOCK TABLES `tbl_visibilidad` WRITE;
+/*!40000 ALTER TABLE `tbl_visibilidad` DISABLE KEYS */;
+INSERT INTO `tbl_visibilidad` VALUES (1,'No Visible'),(2,'Poco Visible'),(3,'Visible');
+/*!40000 ALTER TABLE `tbl_visibilidad` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-02  8:12:36
+-- Dump completed on 2017-02-02  8:24:40
