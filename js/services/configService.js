@@ -7,8 +7,8 @@ angular.module('configService', [])
       return servidor
     };
 
-    this.getUrlRest = function(){
-      return servidor + '/servitecserver/index.php/';
+    this.getUrlServidor = function(){
+      return servidor + '/servitecserver/index.php';
     };
 
   }
