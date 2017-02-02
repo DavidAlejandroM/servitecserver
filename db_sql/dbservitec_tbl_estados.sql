@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
--- Host: localhost    Database: dbsignalstreet
+-- Host: localhost    Database: dbservitec
 -- ------------------------------------------------------
 -- Server version	5.7.11
 
@@ -16,27 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tbl_categoria`
+-- Table structure for table `tbl_estados`
 --
 
-DROP TABLE IF EXISTS `tbl_categoria`;
+DROP TABLE IF EXISTS `tbl_estados`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tbl_categoria` (
-  `cat_idCategoria` int(11) NOT NULL AUTO_INCREMENT,
-  `cat_nombre` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
-  PRIMARY KEY (`cat_idCategoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+CREATE TABLE `tbl_estados` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_categoria`
+-- Dumping data for table `tbl_estados`
 --
 
-LOCK TABLES `tbl_categoria` WRITE;
-/*!40000 ALTER TABLE `tbl_categoria` DISABLE KEYS */;
-INSERT INTO `tbl_categoria` VALUES (1,'Señal Reglamentaria'),(2,'Señal Preventiva'),(3,'Señal Informativa'),(4,'Señal Duplex');
-/*!40000 ALTER TABLE `tbl_categoria` ENABLE KEYS */;
+LOCK TABLES `tbl_estados` WRITE;
+/*!40000 ALTER TABLE `tbl_estados` DISABLE KEYS */;
+INSERT INTO `tbl_estados` VALUES (1,'Bueno'),(2,'Regular'),(3,'Malo');
+/*!40000 ALTER TABLE `tbl_estados` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-02  8:24:43
+-- Dump completed on 2017-02-02  8:12:35
